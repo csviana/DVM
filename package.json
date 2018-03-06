@@ -4,6 +4,7 @@
     "version": "1.0.0",
     "description": "Desenvolvimento da Virtualização de Mercantis",
     "main": "server.js",
+    "eslint.packageManager": "yarn",
     "scripts": {
         "dev": "nodemon"
     },
@@ -14,9 +15,11 @@
     "dependencies": {
         "body-parser": "~1.18.1",
         "ejs": "^2.5.7",
+        "eslint": "^4.18.2",
         "express": "~4.15.4",
         "mongoose": "~4.11.12",
-        "request": "~2.82.0"
+        "request": "~2.82.0",
+        "tslint": "^5.9.1"
     },
     "author": "Cleirton Viana",
     "license": "MIT",
