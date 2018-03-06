@@ -1,0 +1,30 @@
+{
+    "_comment": "Json de exemplo, carregando algumas npms por padrão para interagir com o mongodb",
+    "name": "dev-api-dvm",
+    "version": "1.0.0",
+    "description": "Desenvolvimento da Virtualização de Mercantis",
+    "main": "server.js",
+    "scripts": {
+        "dev": "nodemon"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/csviana/DVM"
+    },
+    "dependencies": {
+        "body-parser": "~1.18.1",
+        "ejs": "^2.5.7",
+        "express": "~4.15.4",
+        "mongoose": "~4.11.12",
+        "request": "~2.82.0"
+    },
+    "author": "Cleirton Viana",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/csviana/DVM/issues"
+    },
+    "homepage": "https://github.com/csviana/DVM#readme",
+    "devDependencies": {
+        "nodemon": "^1.17.1"
+    }
+}
