@@ -3,7 +3,7 @@
     "name": "dev-api-dvm",
     "version": "1.0.0",
     "description": "Desenvolvimento da Virtualização de Mercantis",
-    "main": "server.js",
+    "main": "app.js",
     "eslint.packageManager": "yarn",
     "scripts": {
         "dev": "nodemon"
