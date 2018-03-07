@@ -14,7 +14,7 @@ Ao iniciar esta leve aplicação pela primeira vez no seu smartphone, você só 
 
 ### Você estará num gigamercado sem sair do lugar!
 
-Ao entrar no gigamercado, você verá em um alucinante gráfico, todos os produtos disponíveis na sua localidade organizados nas prateleiras pelos corredores, daí é somente navegar pelos corredores, escolher os produtos a dedo, definir a quantidade em cada um, definir a forma de pagamento e finalizar a compra.
+Ao entrar no gigamercado, você verá em um alucinante gráfico, todos os produtos disponíveis na sua localidade organizados nas prateleiras pelos corredores, daí é somente navegar pelos corredores, escolher os produtos a dedo, definir a quantidade em cada um, selecionar a forma de pagamento e finalizar a compra.
 
 ### É pra quebrar a concorrência!
 
