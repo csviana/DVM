@@ -25,37 +25,35 @@ Será um sistema compartilhado, onde o servidor principal ficará responsável p
 
 ### **Passos do funcionamento:**
 
-> O usuário abrirá a aplicação em qualquer dispositivo e selecionará a sua localização, então surgirá a virtualização do gigamercado contendo todos os produtos disponíveis para aquela localidade, onde ele poderá navegar dentre os corredores virtuais e escolher os produtos das prateleiras como se fosse em um jogo, daí ele vai comprando...
+1. O usuário abrirá a aplicação em qualquer dispositivo e selecionará a sua localização, então surgirá a virtualização do gigamercado contendo todos os produtos disponíveis para aquela localidade, onde ele poderá navegar dentre os corredores virtuais e escolher os produtos das prateleiras como se fosse em um jogo, daí ele vai comprando...
 
-> Quando o usuário terminar de comprar, ele deverá informar a forma de pagamento e receberá um código chave da demanda no aplicativo, está chave será informada ao responsável pelo serviço de entrega para finalizar a requisição.
+2. Quando o usuário terminar de comprar, ele deverá informar a forma de pagamento e receberá um código chave da demanda no aplicativo, está chave será informada ao responsável pelo serviço de entrega para finalizar a requisição.
 
-> A requisição dos itens irá para todas as mercearias e mercantis que estiverem cadastrados no sistema e próximos a ele, onde cada pessoa responsável pelo gerenciamento da aplicação dentro dos estabelecimentos, poderá retornar a requisição com a resposta favorável, isto dependerá da demanda atual do estabelecimento e da disponibilidade física dos itens solicitados.
+3. A requisição dos itens irá para todas as mercearias e mercantis que estiverem cadastrados no sistema e próximos a ele, onde cada pessoa responsável pelo gerenciamento da aplicação dentro dos estabelecimentos, poderá retornar a requisição com a resposta favorável, isto dependerá da demanda atual do estabelecimento e da disponibilidade física dos itens solicitados.
 
-- >_``A solicitação ficará pendente até que haja uma resposta favorável de algum estabelecimento, então aquele comerciante que aceitar primeiro, realizará a venda.``_
+_``A solicitação ficará pendente até que haja uma resposta favorável de algum estabelecimento, então aquele comerciante que aceitar primeiro, realizará a venda.``_
 
-> A resposta favorável do estabelecimento retornará ao usuário para que ele confirme a compra física.
+4. A resposta favorável do estabelecimento retornará ao usuário para que ele confirme a compra física.
 
+_``O pagamento poderá ser em cash mesmo, realizado no recebimento das mercadorias.``_
 
-- >_``O pagamento poderá ser em cash mesmo, realizado no recebimento das mercadorias.``_
+5. Caso haja sucesso na forma de pagamento, o comerciante separará e embalará os produtos para a devida entrega.
 
-> Caso haja sucesso na forma de pagamento, o comerciante separará e embalará os produtos para a devida entrega.
+6. O comerciante acionará o serviço de entrega pelo próprio aplicativo e o entregador que estiver cadastrado na aplicação, disponível e mais próximo do estabelecimento será escolhido.
 
-> O comerciante acionará o serviço de entrega pelo próprio aplicativo e o entregador que estiver cadastrado na aplicação, disponível e mais próximo do estabelecimento será escolhido.
+7. O entregador escolhido poderá aceitar ou não aquele serviço de entrega, isso dependerá da tara da demanda e do seu veículo, caso não aceite, a requisição irá para o próximo entregador.
 
-> O entregador escolhido poderá aceitar ou não aquele serviço de entrega, isso dependerá da tara da demanda e do seu veículo, caso não aceite, a requisição irá para o próximo entregador.
+8. O usuário receberá os produtos e o entregador realizará a cobrança do pagamento, se for em cach e finalizará o serviço inserindo na aplicação dele o código chave da demanda disponibilizada pelo usuário.
 
-> O usuário receberá os produtos e o entregador realizará a cobrança do pagamento, se for em cach e finalizará o serviço inserindo na aplicação dele o código chave da demanda disponibilizada pelo usuário.
+_``Se o pagamento for em cash, o entregador deverá retornar ao comerciante para entregar o valor.``_
 
-- >_``Se o pagamento for em cash, o entregador deverá retornar ao comerciante para entregar o valor.``_
-
-> **(Opcional)** >
-Após a entrega, o usuário poderá classificar o conjunto do serviço com a nota de uma a cinco estrelas, então esta nota irá para a coleção do entregador, do comerciante e para o responsável pelo banco de dados local.
+9. **(Opcional)** > Após a entrega, o usuário poderá classificar o conjunto do serviço com a nota de uma a cinco estrelas, então esta nota irá para a coleção do entregador, do comerciante e para o responsável pelo banco de dados local.
 
 
-### **Repositório:**
-### Você pode acessar o repositório aqui > [repositório](https://github.com/csviana/DVM).
+#### **Repositório:**
+Você pode acessar o repositório aqui > [repositório](https://github.com/csviana/DVM).
 
-### **[Colaboradores](https://github.com/csviana/DVM/settings/collaboration)**
+#### **[Colaboradores](https://github.com/csviana/DVM/settings/collaboration)**
 
 Achou algum problema na página?
 
