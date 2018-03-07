@@ -29,13 +29,9 @@ Será um sistema compartilhado, onde o servidor principal ficará responsável p
 
 2. Quando o usuário terminar de comprar, ele deverá informar a forma de pagamento e receberá um código chave da demanda no aplicativo, está chave será informada ao responsável pelo serviço de entrega para finalizar a requisição.
 
-3. A requisição dos itens irá para todas as mercearias e mercantis que estiverem cadastrados no sistema e próximos a ele, onde cada pessoa responsável pelo gerenciamento da aplicação dentro dos estabelecimentos, poderá retornar a requisição com a resposta favorável, isto dependerá da demanda atual do estabelecimento e da disponibilidade física dos itens solicitados.
+3. A requisição dos itens irá para todas as mercearias e mercantis que estiverem cadastrados no sistema e próximos a ele, onde cada pessoa responsável pelo gerenciamento da aplicação dentro dos estabelecimentos, poderá retornar a requisição com a resposta favorável, isto dependerá da demanda atual do estabelecimento e da disponibilidade física dos itens solicitados. _A solicitação ficará pendente até que haja uma resposta favorável de algum estabelecimento, então aquele comerciante que aceitar primeiro, realizará a venda._
 
-_``A solicitação ficará pendente até que haja uma resposta favorável de algum estabelecimento, então aquele comerciante que aceitar primeiro, realizará a venda.``_
-
-4. A resposta favorável do estabelecimento retornará ao usuário para que ele confirme a compra física.
-
-_``O pagamento poderá ser em cash mesmo, realizado no recebimento das mercadorias.``_
+4. A resposta favorável do estabelecimento retornará ao usuário para que ele confirme a compra física. _O pagamento poderá ser em cash mesmo, realizado no recebimento das mercadorias._
 
 5. Caso haja sucesso na forma de pagamento, o comerciante separará e embalará os produtos para a devida entrega.
 
@@ -43,9 +39,7 @@ _``O pagamento poderá ser em cash mesmo, realizado no recebimento das mercadori
 
 7. O entregador escolhido poderá aceitar ou não aquele serviço de entrega, isso dependerá da tara da demanda e do seu veículo, caso não aceite, a requisição irá para o próximo entregador.
 
-8. O usuário receberá os produtos e o entregador realizará a cobrança do pagamento, se for em cach e finalizará o serviço inserindo na aplicação dele o código chave da demanda disponibilizada pelo usuário.
-
-_``Se o pagamento for em cash, o entregador deverá retornar ao comerciante para entregar o valor.``_
+8. O usuário receberá os produtos e o entregador realizará a cobrança do pagamento, se for em cach e finalizará o serviço inserindo na aplicação dele o código chave da demanda disponibilizada pelo usuário. _Se o pagamento for em cash, o entregador deverá retornar ao comerciante para entregar o valor._
 
 9. **(Opcional)** > Após a entrega, o usuário poderá classificar o conjunto do serviço com a nota de uma a cinco estrelas, então esta nota irá para a coleção do entregador, do comerciante e para o responsável pelo banco de dados local.
 
