@@ -20,7 +20,7 @@ var mongoose = require('mongoose');
  //Criando uma instância das rotas vias Express:
  mongoose.Promise = global.Promise;  
  //URI do MLab
- mongoose.connect('http://mongodb//webdevs:senhadeteste1234@ds012538.mlab.com:12538/dvm', {
+ mongoose.connect('mongodb://webdevs:senhadeteste1234@ds012538.mlab.com:12538/dvm', {
     useMongoClient: true
  });
 
