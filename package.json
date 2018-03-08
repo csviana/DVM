@@ -19,6 +19,7 @@
         "express": "~4.15.4",
         "mongoose": "~4.11.12",
         "request": "~2.82.0",
+        "socket.io": "^2.0.4",
         "tslint": "^5.9.1"
     },
     "author": "Cleirton Viana",

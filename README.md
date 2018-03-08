@@ -1,4 +1,4 @@
-### Bem vindo(a)!
+### Bem-vindo(a)!
 
 #### Sobre este projeto:
 
@@ -10,7 +10,7 @@ Imagine você se deslocando para um supermercado tradicional, pegando um carrinh
 
 ### Esqueça!
 
-Ao iniciar esta leve aplicação pela primeira vez no seu smartphone, você só precisará se cadastar, definir a sua localização no aplicativo e pronto!
+Ao iniciar esta leve aplicação pela primeira vez no seu Smartphone, você só precisará se cadastrar, definir a sua localização no aplicativo e pronto!
 
 ### Você estará num gigamercado sem sair do lugar!
 
@@ -21,7 +21,7 @@ Ao entrar no gigamercado, você verá em um alucinante gráfico, todos os produt
 Todos os produtos disponíveis serão os melhores, ou seja, os de melhores qualidades e com os menores preços da região!
 
 ## Como funcionará o sistema?
-Será um sistema compartilhado, onde o servidor principal ficará responsável pelo gerenciamento dos usuários e colaboradores cadastrados, e os servidores secundários ficarão responsáveis pelo gerenciamento dos produtos ofertados localmente e pela disponibilidade das virtalizações.
+Será um sistema compartilhado, onde o servidor principal ficará responsável pelo gerenciamento dos usuários e colaboradores cadastrados, e os servidores secundários ficarão responsáveis pelo gerenciamento dos produtos ofertados localmente e pela disponibilidade das virtualizações.
 
 ### **Passos do funcionamento:**
 
@@ -43,7 +43,6 @@ Será um sistema compartilhado, onde o servidor principal ficará responsável p
 
 9. **(Opcional)** > Após a entrega, o usuário poderá classificar o conjunto do serviço com a nota de uma a cinco estrelas, então esta nota irá para a coleção do entregador, do comerciante e para o responsável pelo banco de dados local.
 
-
 #### **Repositório:**
 Você pode acessar o repositório aqui > [repositório](https://github.com/csviana/DVM).
 
@@ -51,4 +50,4 @@ Você pode acessar o repositório aqui > [repositório](https://github.com/csvia
 
 Achou algum problema na página?
 
-Você pode checar a [documentação do GitHub](https://help.github.com/categories/github-pages-basics/) ou [entrar em contato comigo](https://www.facebook.com/cleirton.viana) para maiores informações.
+Você pode checar a [documentação do GitHub](https://help.github.com/categories/github-pages-basics/) ou [entrar em contato comigo](https://www.facebook.com/cleirton.viana) para mais informações.

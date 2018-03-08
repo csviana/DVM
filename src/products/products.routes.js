@@ -67,7 +67,7 @@ router.route('/:produto_id')
 
     /* 3) Método: Seleciona o produto pelo id informado no método GET ao acessar: 'http://localhost:8000/api/produtos/<produto_id>' */
         .get(function(req, res){
-            
+        
             //Função para selecionar um determinado produto pelo ID:
             Produto.findById(req.params.produto_id, function(err, produto){
                 if(err){
