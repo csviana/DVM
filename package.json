@@ -14,11 +14,13 @@
     },
     "dependencies": {
         "body-parser": "~1.18.1",
+        "bootstrap": "^4.0.0",
         "ejs": "^2.5.7",
         "eslint": "^4.18.2",
         "express": "~4.15.4",
         "mongoose": "~4.11.12",
         "request": "~2.82.0",
+        "shortid": "^2.2.8",
         "socket.io": "^2.0.4",
         "tslint": "^5.9.1"
     },

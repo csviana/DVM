@@ -48,7 +48,7 @@ var mongoose = require('mongoose');
  //Rotas dos produtos:
  app.use('/products', product_router); //register the routes
 
-  
+
  //Definindo a porta da API:
  var port = process.env.port || 8000;
  //iniciando a aplicação:
