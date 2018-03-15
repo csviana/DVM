@@ -28,8 +28,6 @@ var mongoose = require('mongoose');
  app.use(bodyParser.urlencoded({extended:true}));
  app.use(bodyParser.json());
 
- 
-
  //-------------DEFININDO AS ROTAS
 
  //Chamada das rotas predefinidas:
