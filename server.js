@@ -166,18 +166,19 @@ app.get('/contacts', function(req, res){
 https.createServer(options, app).listen(443);
 
 
+	
+/*
 //const fs = require('fs');
 var imagemin = require('image-min');
 var path = require('path');
  
-var src = fs.createReadStream('/docs/imgs/Negociação finalizada.png');
+var src = fs.createReadStream('new.png');
 var ext = path.extname(src.path);
  
 src
     .pipe(imagemin({ ext: ext }))
 	.pipe(fs.createWriteStream('img-minified' + ext));
-	
-/*
+
 
 //Carregando a biblioteca para a conexão com o Mongo
 const MongoClient = require('mongodb').MongoClient;

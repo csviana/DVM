@@ -1,6 +1,8 @@
+import { Query } from 'mongoose';
+
 /**
- * File: products.routes.js
- * Description:  Script responsável pelas rotas do produto - repositório https://github.com/csviana/DVM
+ * File: lojas.routes.js
+ * Description:  Script responsável pelas rotas da loja - repositório https://github.com/csviana/DVM
  * Author: Cleirton Viana
  * Create Date: 15/03/2017
  */
@@ -120,7 +122,7 @@ router.route('/:loja_id')
             loja.ld = Date();
            
             loja.iu = getArrayid(req.body.iu) || loja.iu;
-            loja.pl = req.body.pl[id_p,p_ps,p_rt,vp,et] || loja.pl;
+            //loja.pl = req.body.pl[id_p,p_ps,p_rt,vp,et] || loja.pl;
             loja.iv = getArrayid(req.body.iv) || loja.iv;
             loja.ml = getArrayid(req.body.iu) || loja.ml;
 			
@@ -169,4 +171,140 @@ function getArrayid(elemento){
 return {id:loja_iu.split(",")}
 
 }
+
+//Rotas que terminarem em '/preload/:loja_id' métodos de GET, PUT e DELETE : loja_id
+router.route('/preload/:loja_id')
+
+/* 6) Método: Coleta os dados separadamente que foram cadastrados na loja ao acessar com GET: 'http://localhost/lojas/preload/<loja_id>'*/
+.get(function(req, res){
+     
+    if (req.params.loja_id!=null && req.params.ver){
+
+   var se=null;
+    var query = Loja.findById(req.params.loja_id);
+        switch(req.params.ver){
+            case "normal":
+                se="ed dl sv ps rt cl";
+                break;
+            
+            case "admin":
+                se="cs ed dl el gm sv ld ui";
+                break;
+
+            case "produtos":
+                se="pl";
+                break;
+
+            case "vendas":
+                se="iv";
+                break;
+            
+            case "membros":
+                se="ml";
+                break;
+        }
+if(se!=null){
+     query.select(se); //responsáveis -- pode faze mais de uma busca por vez, basta inserir um espaço
+		query.exec(function (err, loja) {
+        if (err) return handleError(err);
+        res.json(loja);
+      });
+    }
+}
+})
+
+/* 6) Método: Adicionar atributos aos campos Array das lojas ao acessar com PUT: 'http://localhost/lojas/preload/<loja_id>' */
+.put(function(req, res){
+	
+	//Primeiro passo: encontrar uma determinada loja pelo ID:
+	//Loja.findById(req.params.loja_id, function(err, loja){
+	//	if(err){
+	//		res.send('ID da loja não encontrado: ' + err);
+	//		}else{
+			//Segundo passo: pegar as propriedades da loja e atualizá-las:
+            
+            if (req.params.loja_id!=null && req.params.ins){
+        
+                var se=null;
+    var query = Loja.findById(req.params.loja_id);
+        switch(req.params.ins){
+            case "usuario":
+                se="ed dl sv ps rt cl";
+                break;
+            
+            case "admin":
+                se="cs ed dl el gm sv ld ui";
+                break;
+
+            case "produtos":
+                se="pl";
+                break;
+
+            case "vendas":
+                se="iv";
+                break;
+            
+            case "membros":
+                se="ml";
+                break;
+        }
+if(se!=null){
+     query.select(se); //responsáveis -- pode faze mais de uma busca por vez, basta inserir um espaço
+		query.exec(function (err, loja) {
+        if (err) return handleError(err);
+        res.json(loja);
+      });
+    }
+}
+});            
+
 module.exports = router;
+
+
+/*
+Exemplos de $pull
+//Exclui todos os atributos apples e oranges de dentro dos documentos fruits, que está dentro do db.store e remove todos os atributos carrotes dentro de vegetals
+db.stores.update(
+    { },
+    { $pull: { fruits: { $in: [ "apples", "oranges" ] }, vegetables: "carrots" } },
+    { multi: true }
+)
+
+//Remove de dentro de votes, todos os votos iguais ou maiores que 6
+db.profiles.update( { _id: 1 }, { $pull: { votes: { $gte: 6 } } } )
+
+
+//remove de todos os results, os itens que tenham item B e score 8s iguais a 8
+db.survey.update(
+  { },
+  { $pull: { results: { score: 8 , item: "B" } } },
+  { multi: true }
+)
+//outro exemplo de uso:
+db.survey.update(
+  { },
+  { $pull: { results: { $elemMatch: { score: 8 , item: "B" } } } },
+  { multi: true }
+)
+
+/No caso abaixo é obrigatório o uso de #elemMatch para acessar os objetos netos 
+db.survey.update(
+  { },
+  { $pull: { results: { answers: { $elemMatch: { q: 2, a: { $gte: 8 } } } } } },
+  { multi: true }
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
