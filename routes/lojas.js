@@ -34,7 +34,7 @@ router.get("/:id", (req, res, next)=>{
 //Definindo a rota de cadastramento da loja
 router.post("/", (req, res, next)=>{
 	const loja = req.body;
-	if (!loja.title || !(loja.isDone + '')) {
+	if (!(loja.isDone + '')) {
 		res.status(400).json({
 			error: "Bad Data"
 		});
@@ -96,24 +96,18 @@ router.delete("/:id", (req, res, next)=>{
 //Definindo a rota de atualização da loja
 router.put("/:id", (req, res, next)=>{
 	const loja = req.body;
-	const updateLoja ={};
 	
-	if(loja.isDone){
-		updateLoja.isDone = loja.isDone;
-	}
-	
-	if(loja.title){
-		updateLoja.title = loja.title;
-	}
-	
-	if(!updateLoja){
+	if(!loja.isDone){
 		res.status(400).json({
 			error: "Bad Request"
 		});
 		}else{
-		db.lojas.update({_id: mongo.ObjectId(req.body.id)}, (err, loja)=>{
+		db.lojas.findAndModify({
+			query: { _id: mongo.ObjectId(req.body.id) },
+			update: { $set: {loja} },
+			new: true
+		}, function (err, doc, lastErrorObject) {
 			if(err) return next(err);
-			res.json(loja);
 		});
 	}
 });

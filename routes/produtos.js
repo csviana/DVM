@@ -9,10 +9,8 @@
 const router = require("express").Router();
 const mongo = require("mongojs");
 const db = mongo("dvm", ['produtos']);
-const request = require("request");
 const fs = require("fs");
-
-//Defina a sua Sua chave da api Google Maps para poder fazer o download dos mapas
+const formidable = require('formidable');
 
 //Definindo a rota para o carregamento de todas as produtos
 router.get("/", (req, res, next)=>{
@@ -30,103 +28,56 @@ router.get("/:id", (req, res, next)=>{
 	});
 });
 
-//Definindo a rota de cadastramento da loja
+//Definindo a rota de cadastramento do produto
 router.post("/", (req, res, next)=>{
-	const loja = req.body;
-	if (!loja.title || !(loja.isDone + '')) {
+	const produto = req.body;
+	if (!(produto.isDone + '')) {
 		res.status(400).json({
 			error: "Bad Data"
 		});
-		} else{
+		} else {
 		
-		var el = req.body.el;
-		var url = "https://maps.google.com/maps/api/geocode/json?key="+key+"&address="+el+"&components=country:BR";
-		request({
-			url: url,
-			json: true
-			}, function (error, response, body) {
-			if (!error && response.statusCode === 200) {
-				var endereço;
-				var lat;
-				var lng;
-				
-				if(body.results[0].formatted_address)
-				endereço = body.results[0].formatted_address;
-				
-				if(body.results[0].geometry.location.lat)
-				lat = body.results[0].geometry.location.lat;
-				
-				if(body.results[0].geometry.location.lng)
-				lng = body.results[0].geometry.location.lng;
-				
-				if (endereço && lat && lng){
-					req.body.el = endereço;
-					
-					req.body.gm =  download('https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=17&size=400x400&key='+key, 'map.jpg', function(){
-						
-						req.body.gm = base64_encode('map.jpg');
-						
-						db.lojas.save(loja, (err,loja)=>{
-							if(err) return next(err);
-							res.json(loja);
-						});
-					});
-					}else{
-					req.body.gm="não verificada";
-					db.lojas.save(loja, (err,loja)=>{
-						if(err) return next(err);
-						res.json(loja);
-					});
-				}
-			}
+		var form = new formidable.IncomingForm();
+		form.parse(req, function (err, fields, files) {
+			produto.im= base64_encode(files.img.name)
+			console.log('File uploaded: ' + files.img.name);
 		});
 		
+		db.produtos.save(produto, (err,produto)=>{
+			if(err) return next(err);
+			res.json(produto);
+		});
 	}
 });
 
-//Definindo a rota de exclusão da loja
+//Definindo a rota de exclusão do produto
 router.delete("/:id", (req, res, next)=>{
-	db.lojas.remove({_id: mongo.ObjectId(req.body.id)}, (err, result)=>{
+	db.produtos.remove({_id: mongo.ObjectId(req.body.id)}, (err, result)=>{
 		if(err) return next(err);
 		res.json(result);
 	});
 });
 
-//Definindo a rota de atualização da loja
+//Definindo a rota de atualização da produto
 router.put("/:id", (req, res, next)=>{
-	const loja = req.body;
-	const updateLoja ={};
+	const produto = req.body;
 	
-	if(loja.isDone){
-		updateLoja.isDone = loja.isDone;
-	}
-	
-	if(loja.title){
-		updateLoja.title = loja.title;
-	}
-	
-	if(!updateLoja){
+	if(!produto.isDone){
 		res.status(400).json({
 			error: "Bad Request"
 		});
 		}else{
-		db.lojas.update({_id: mongo.ObjectId(req.body.id)}, (err, loja)=>{
+		db.produtos.findAndModify({
+			query: { _id: mongo.ObjectId(req.body.id) },
+			update: { $set: {produto} },
+			new: true
+			}, function (err, doc, lastErrorObject) {
 			if(err) return next(err);
-			res.json(loja);
 		});
 	}
 });
 
-//Função de download
-var download = function(uri, filename, callback){
-	request.head(uri, function(err, res, body){
-		//console.log('content-type:', res.headers['content-type']);
-		//console.log('content-length:', res.headers['content-length']);
-		request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-	});
-};
-
-//Codificador da imagem do google maps em base64
+//Codificador da imagem do produto em base64
 function base64_encode(file) {
 	var bitmap = fs.readFileSync(file);
 	return new Buffer(bitmap).toString('base64');
