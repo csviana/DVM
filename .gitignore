@@ -8,6 +8,7 @@ data/
 *.png
 *.gif
 *.ico
+*lock.json
 
 ### CakePHP ###
 # CakePHP 3
