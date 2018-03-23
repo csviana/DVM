@@ -1,8 +1,8 @@
 # Created by https://www.gitignore.io/api/node,unity,cakephp,phpstorm,monodevelop,phpstorm+all,visualstudio,visualstudiocode
 
-/public/*
-/encryption/*
-/data/*
+public/
+encryption/
+data/
 
 *.jpg
 *.png
