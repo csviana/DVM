@@ -1,0 +1,48 @@
+scripts£<script>
+var socket = io.connect('http://csviana.ddns.net:2558');
+if(localStorage.getItem("username") == "Desconhecido"){
+  var person = prompt("Please enter your name", "Harry Potter");
+
+if (person == null || person == "") {
+    txt = "User cancelled the prompt.";
+} else {
+    txt = "Hello " + person + "! How are you today?";
+    localStorage.setItem("username", person);
+}
+}
+
+var userpass = {
+  name:localStorage.getItem("username"),
+  position: "0,0,0",
+  msg: "Conectado(a)",
+  foto:"sem"
+};
+socket.emit('PLAY', userpass);
+socket.emit('USER_CONNECT');
+var countuser=0;
+
+
+socket.on('USER_CONNECTED', function(data){
+ countuser++;
+ $("#onlines").text("Online: "+countuser);
+});
+
+socket.on('USER_DISCONNECTED', function(data){
+ countuser--;
+ $("#onlines").text("Online: "+countuser);
+});
+
+socket.on('PLAY', function (data) {
+  $("#usuario").text("IDUser: "+data.id+", nome: "+data.name+", ip: "+data.ip);
+});
+/*
+socket.on('USER_CONNECTED', function (data) {
+  $("#onlines").text("Online: "+data.name);
+});*/
+console.log("Esta aplicação é atualizada automaticamente...");
+
+function verclipe(){
+
+  $("#clipe").html('<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/02AuBRrPyPQ?autoplay=1&fs=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&ap=%2526fmt%3D22"></iframe>');
+}
+</script>

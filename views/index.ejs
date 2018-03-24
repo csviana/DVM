@@ -9,22 +9,28 @@
 		<link rel="icon" href="../../favicon.ico">
 		<style id="bootstrapcss"></style>
 		<style id="styles"></style>
-	</head>
-	<body>
-		<div id="homepage"></div>
-		<div id="root"></div>
-		<div id="painel">
-			<button onclick="localStorage.clear();location.reload();">Limpar</button>
-		</div>
 		<script id="jquery"></script>
 		<script id="bootstrapjs"></script>
+		<script id="socketio"></script>
 		<script id="scripts"></script>
+	</head>
+	<body >
+		
+		<div id="homepage"></div>
+		<div id="root"></div>
+		
+		<div id="painel">
+			<div class="alert-success" id="onlines"></div>
+			<div class="alert-success" id="usuario"></div>
+			<button onclick="localStorage.clear();location.reload();">Limpar</button>
+		</div>
+		
 		<script>
 			var timer;
 			var status =0;
 			function isload(){
 				if (status == 0){
-					for (let index = 1; index < localStorage.length-1; index++) {
+					for (let index = 1; index < localStorage.length-2; index++) {
 						var campos  = localStorage.getItem("f"+index).split("£");  
 						if(campos.length==2)            
 						var element = eval ("(" + "document.getElementById('"+campos[0]+"').innerHTML="+ JSON.stringify(campos[1])+")");
@@ -49,8 +55,8 @@
 						timer = setTimeout(() => {
 							console.log("Verificando a função: "+ localStorage.getItem("func"));
 							isload();
-						}, 500);
-
+						}, 1);
+						
 						}else if(this.readyState == 4 && this.status == 304){
 						localStorage.setItem("load", "console.log('Sistema atualizado!')");
 						
@@ -76,6 +82,7 @@
 			
 			if (typeof(Storage) !== "undefined") {
 				if (!localStorage.getItem("load")){
+					localStorage.setItem("username","Desconhecido");
 					localStorage.setItem("load", "console.log('Aguarde enquanto a estrutura desta aplicação é instalada')");
 					localStorage.setItem("func", "1");
 				}

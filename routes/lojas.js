@@ -8,12 +8,12 @@
 //Carregando as dependências:
 const router = require("express").Router();
 const mongo = require("mongojs");
-const db = mongo("dvm", ['lojas']);
+const db = mongo("dvm", ['lojas']); //Carregando o mongodb em localhost
 const request = require("request");
 const fs = require("fs");
 
 //Defina a sua Sua chave da api Google Maps para poder fazer o download dos mapas
-var key = "AIzaSyDoP_k20pvexaV5P-_Z2kOenxD8q3my3jY"; 
+var key = ""; 
 
 //Definindo a rota para o carregamento de todas as lojas
 router.get("/", (req, res, next)=>{

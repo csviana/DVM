@@ -8,30 +8,30 @@
 //Carregando as dependências:
 const router = require("express").Router();
 const mongo = require("mongojs");
-const db = mongo("dvm", ['produtos']); //Carregando o mongodb em localhost
+const db = mongo("dvm", ['usuarios']); //Carregando o mongodb em localhost
 const formidable = require('formidable');
 const fs = require("fs");
 
-//Definindo a rota para o carregamento de todas as produtos
+//Definindo a rota para o carregamento de todas as usuários
 router.get("/", (req, res, next)=>{
-	db.produtos.find((err, produtos) => {
+	db.usuarios.find((err, usuarios) => {
 		if (err) return next(err);
-		res.json(produtos);
+		res.json(usuarios);
 	});
 });
 
-//Definindo a rota de carregamento de um produto
+//Definindo a rota de carregamento de um usuário
 router.get("/:id", (req, res, next)=>{
-	db.produtos.findOne({_id: mongo.ObjectId(req.body.id)}, (err, produto) => {
+	db.usuarios.findOne({_id: mongo.ObjectId(req.body.id)}, (err, usuario) => {
 		if (err) return next(err);
-		res.json(produto);
+		res.json(usuario);
 	});
 });
 
-//Definindo a rota de cadastramento do produto
+//Definindo a rota de cadastramento do usuário
 router.post("/", (req, res, next)=>{
-	const produto = req.body;
-	if (!(produto.isDone + '')) {
+	const usuario = req.body;
+	if (!(usuario.isDone + '')) {
 		res.status(400).json({
 			error: "Bad Data"
 		});
@@ -39,13 +39,13 @@ router.post("/", (req, res, next)=>{
 		
 		var form = new formidable.IncomingForm();
 		form.parse(req, function (err, fields, files) {
-			produto.im= base64_encode(files.img.name)
+			usuario.im= base64_encode(files.img.name)
 			console.log('File uploaded: ' + files.img.name);
 		});
 		
-		db.produtos.save(produto, (err,produto)=>{
+		db.usuarios.save(produto, (err,usuario)=>{
 			if(err) return next(err);
-			res.json(produto);
+			res.json(usuario);
 		});
 	}
 });
