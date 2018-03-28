@@ -69,7 +69,7 @@ Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google
 5. [ ] Ferramenta para estilização da loja: [Em desenvolvimento]()
 6. [ ] Ferramenta para importação de produtos em 3D
 7. [ ] Ferramenta para identificar usuários online dentro da loja
-8. [ ] Ferramenta para expusar/banir usuários das lojas
+8. [ ] Ferramenta para expulsar/banir usuários das lojas
 9. [ ] Ferramenta para mover usuário de ambiente
 10. [ ] Ferramenta para realizar pagamento online
 11. [ ] Ferramenta para visualizar compras realizadas
