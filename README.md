@@ -5,7 +5,7 @@ Criar um ambiente virtual e tridimensional onde o usuário interaja por meio de 
 <br />
 
 
-## Produção do Front-end > [aqui](http://csviana.ddns.net)
+### Produção do Front-end > [aqui](http://csviana.ddns.net)
 
 >`
 A produção do Front-end está em constantes atualizações, caso perceba algum erro, basta clicar no botão "Limpar", localizado na parte inferior esquerda da página.
@@ -13,7 +13,7 @@ A produção do Front-end está em constantes atualizações, caso perceba algum
 
 <br />
 
-## Produção da aplicação Android > [aqui](http://csviana.ddns.net/apk/remote.apk)
+### Produção da aplicação Android > [aqui](http://csviana.ddns.net/apk/remote.apk)
 
 > `
 Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google Play Store, com isso é necessário habilitar a opção para instalar aplicativos de fontes desconhecidas.
@@ -21,12 +21,12 @@ Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google
 
 <br />
 
-## Repositório do desenvolvimento > [aqui](https://github.com/csviana/DVM)
+### Repositório do desenvolvimento > [aqui](https://github.com/csviana/DVM)
 
 
 <br />
 
-## Desenvolvimento Back-end:
+### Desenvolvimento Back-end:
 
 1. [X] Definir a plataforma de desenvolvimento do Back-end: [NodeJS]()
 2. [X] Definir o banco de dados a ser usado: [MongoDB]()
@@ -39,7 +39,7 @@ Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google
 
 <br>
 
-## Desenvolvimento Front-end:
+### Desenvolvimento Front-end:
 1. [X] Definir as bibliotecas utilizadas no Front-end: [Jquery]()
 2. [X] Definir os frameworks utilizados no Front-end: [Bootstrap]()
 3. [X] Definir o método de armazenamento web: [localStorage]()
@@ -65,7 +65,7 @@ Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google
 
 <br>
 
-## Desenvolvimento Mobile:
+### Desenvolvimento Mobile:
 1. [X] Scripts de comunicação com WebSocket
 2. [X] Definir os controles de movimentação tridimensional
 3. [X] Definir a função de mensageiro Realtime
@@ -86,7 +86,43 @@ Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google
 
 #### **[Veja os Colaboradores](https://github.com/csviana/DVM/settings/collaboration)**
 
-## Licença: MIT
+### Licença: MIT
+
+<br />
+
+### Política de Privacidade:
+Para a funcionalidade do sistema, será necessário o armazenamento de informações pessoais, seguem abaixo as funções e os dados que serão necessariamente coletados:
+
+#### Cadastro:
+* Nome completo >  Apenas para utilização do mensageiro e serviço de entrega
+* Definição do apelido único > Apenas para o acesso
+* Definição da senha > Apenas para o acesso
+* Endereço de e-mail > Apenas para a recuperação de acesso
+* Endereço residencial > Apenas para o serviço de entrega
+* Contato móvel > Apenas para validar o cadastro e confirmar o serviço de entrega
+* Contato fixo > Apenas para validar o serviço de vendas
+* Momento do cadastro > Apenas para aplicar bonificação
+* IP do último acesso > Apenas para proteção de ataque hacker
+* Momento do último acesso > Apenas para proteção de ataque hacker e geração relatórios de utilização.
+
+`É fortemente recomendável que informações de cadastro não sejam repassadas a terceiros, exceto em caso de ação judicial, assim fortalecerá a credibilidade dos usuários com o sistema`
+
+#### Compras:
+* Produtos comprados
+* Valores dos produtos
+* Geolocalização > Importante para automatizar a validação do serviço de entrega
+* Momento da compra
+* Momento da entrega
+* Classificação do serviço de entrega > Opcional
+* Relato sobre a entrega > Opcional
+
+`Apenas a classificação do serviço de entrega e relato sobre a entrega serão compartilhados com terceiros, com a finalidade de aprimorar os produtos e serviços ofertados no sistema. Já os dados dos cartões e contas bancárias não passarão sequer por este sistema, pois as validações de compras serão feitas pelas próprias operadoras de crédito. É extremamente importante informar que os usuários NUNCA forneçam dados pessoais fora do cadastro e dados de cartões só deverão ser fornecidos na ferramenta apropriada`
+
+
+#### Conversas:
+* Nenhuma conversa será armazenada em banco de dados, pois recomendamos a expressão individual nas comunicações e bloqueio automático de palavras de baixo calão.
+
+`Contudo, se encontrado alguma mensagem ofensiva nas conversas, é recomendável acionar o suporte para a devida análise`
 
 Achou algum problema na página?
 
