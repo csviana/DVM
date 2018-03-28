@@ -43,7 +43,7 @@ router.post("/", (req, res, next)=>{
 			console.log('File uploaded: ' + files.img.name);
 		});
 		
-		db.usuarios.save(produto, (err,usuario)=>{
+		db.usuarios.save(usuario, (err,usuario)=>{
 			if(err) return next(err);
 			res.json(usuario);
 		});
@@ -52,24 +52,24 @@ router.post("/", (req, res, next)=>{
 
 //Definindo a rota de exclusão do produto
 router.delete("/:id", (req, res, next)=>{
-	db.produtos.remove({_id: mongo.ObjectId(req.body.id)}, (err, result)=>{
+	db.usuarios.remove({_id: mongo.ObjectId(req.body.id)}, (err, result)=>{
 		if(err) return next(err);
 		res.json(result);
 	});
 });
 
-//Definindo a rota de atualização da produto
+//Definindo a rota de atualização da usuário
 router.put("/:id", (req, res, next)=>{
-	const produto = req.body;
+	const usuario = req.body;
 	
-	if(!produto.isDone){
+	if(!usuario.isDone){
 		res.status(400).json({
 			error: "Bad Request"
 		});
 		}else{
-		db.produtos.findAndModify({
+		db.usuarios.findAndModify({
 			query: { _id: mongo.ObjectId(req.body.id) },
-			update: { $set: {produto} },
+			update: { $set: {usuario} },
 			new: true
 			}, function (err, doc, lastErrorObject) {
 			if(err) return next(err);
@@ -77,7 +77,7 @@ router.put("/:id", (req, res, next)=>{
 	}
 });
 
-//Codificador da imagem do produto em base64
+//Codificador da imagem do usuário em base64
 function base64_encode(file) {
 	var bitmap = fs.readFileSync(file);
 	return new Buffer(bitmap).toString('base64');

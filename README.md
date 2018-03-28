@@ -1,52 +1,90 @@
-### Bem-vindo(a)!
+Sobre este projeto:
 
-#### Sobre este projeto:
-
-## Desenvolvimento da Virtualização de Mercantis - DVM
+### Desenvolvimento da Virtualização de Mercantis - DVM
 
 ![](https://tecnologiasemsegredos.files.wordpress.com/2011/01/virtualizacao.png)
 
-Imagine você se deslocando para um supermercado tradicional, pegando um carrinho de compras, procurando pelos produtos mais em conta, tendo que empurrar o carrinho pra lá e pra cá pelos corredores lotados e no final, enfrentar uma das filas enormes que se formaram nos caixas!
 
-### Esqueça!
+## Objetivo:
 
-Ao iniciar esta leve aplicação pela primeira vez no seu Smartphone, você só precisará se cadastrar, definir a sua localização no aplicativo e pronto!
+Criar um ambiente virtual e tridimensional onde o usuário interaja por meio de seu Smartphone com os produtos disponíveis fisicamente próximos à sua localização, podendo ele explorar diversos recursos até que adquira o produto ofertado, como apresentações em fotos e vídeos, disponibilidade física dos produtos com o fornecedor, tempo médio para entrega, relato de compradores anteriores, preços e formas de pagamento.
 
-### Você estará num gigamercado sem sair do lugar!
+Acompanhe a produção do Front-end > [clicando aqui](http://csviana.ddns.net)
 
-Ao entrar no gigamercado, você verá em um alucinante gráfico, todos os produtos disponíveis na sua localidade organizados nas prateleiras pelos corredores, daí é somente navegar pelos corredores, escolher os produtos a dedo, definir a quantidade em cada um, selecionar a forma de pagamento e finalizar a compra.
+```
+A produção do Front-end está em constantes atualizações, caso perceba algum erro, basta clicar no botão "Limpar", localizado na parte inferior esquerda da página.
+```
 
-### É pra quebrar a concorrência!
+Acompanhe a produção da aplicação para Android > [aqui](http://csviana.ddns.net/apk/remot.apk)
+```
+Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google Play Store, com isso é necessário habilitar a opção para instalar aplicativos de fontes desconhecidas.
+```
 
-Todos os produtos disponíveis serão os melhores, ou seja, os de melhores qualidades e com os menores preços da região!
+<br>
 
-## Como funcionará o sistema?
-Será um sistema compartilhado, onde o servidor principal ficará responsável pelo gerenciamento dos usuários e colaboradores cadastrados, e os servidores secundários ficarão responsáveis pelo gerenciamento dos produtos ofertados localmente e pela disponibilidade das virtualizações.
+## Andamento do desenvolvimento Back-end:
 
-### **Passos do funcionamento:**
+1. [X] Definir a plataforma de desenvolvimento do Back-end: [NodeJS]()
+2. [X] Definir o banco de dados a ser usado: [MongoDB]()
+3. [X] Definir a API de comunicação Realtime: [Socket.IO]()
+4. [X] Definir as rotas principais: [usuários](), [lojas](), [vendas](), [produtos]() e [funcões]()
+5. [X] Desenvolver as funcionalidades básicas de acesso: [index.js]()
+6. [ - ] Definir o servidor de propagandas visuais
 
-1. O usuário abrirá a aplicação em qualquer dispositivo e selecionará a sua localização, então surgirá a virtualização do gigamercado contendo todos os produtos disponíveis para aquela localidade, onde ele poderá navegar dentre os corredores virtuais e escolher os produtos das prateleiras como se fosse em um jogo, daí ele vai comprando...
+...
 
-2. Quando o usuário terminar de comprar, ele deverá informar a forma de pagamento e receberá um código chave da demanda no aplicativo, está chave será informada ao responsável pelo serviço de entrega para finalizar a requisição.
+<br>
 
-3. A requisição dos itens irá para todas as mercearias e mercantis que estiverem cadastrados no sistema e próximos a ele, onde cada pessoa responsável pelo gerenciamento da aplicação dentro dos estabelecimentos, poderá retornar a requisição com a resposta favorável, isto dependerá da demanda atual do estabelecimento e da disponibilidade física dos itens solicitados. _A solicitação ficará pendente até que haja uma resposta favorável de algum estabelecimento, então aquele comerciante que aceitar primeiro, realizará a venda._
+## Andamento do desenvolvimento Front-end:
+1. [X] Definir as bibliotecas utilizadas no Front-end: [Jquery]()
+2. [X] Definir os frameworks utilizados no Front-end: [Bootstrap]()
+3. [X] Definir o método de armazenamento web: [localStorage]()
+4. [X] Definir o CSS do Bootstrap: [routes/func/1.html]()
+5. [X] Definir o CSS personalizado: [routes/func/2.html]()
+6. [X] Definir a estrutura HTML5 da Homepage: [routes/func/3.html]()
+7. [X] Definir a estrutura HTML5 do Root: [routes/func/4.html]()
+8. [X] Definir as functions do Jquery: [routes/func/5.html]()
+9. [X] Definir as functions do WebSocket: [routes/func/6.html]()
+10. [X] Definir as functions do Bootstrap: [routes/func/7.html]()
+11. [X] Definir as functions personalizadas: [routes/func/8.html]()
+12. [ - ] Definir o formulário para o cadastramento de usuários
+13. [ - ] Definir o formulário para o cadastramento de lojas
+14. [ - ] Definir o formulário para o cadastramento de vendas
+15. [ - ] Definir o formulário para o cadastramento de produtos
+16. [ - ] Definir o formulário para o cadastramento de funções
+17. [ - ] Definir o layout para o login de usuários via web
+18. [ - ] Definir o layout para o mensageiro Realtime
+19. [ - ] Definir o mapa para geolocalização das rotas de entrega
+20. [ - ] Definir os métodos para pagamentos online
 
-4. A resposta favorável do estabelecimento retornará ao usuário para que ele confirme a compra física. _O pagamento poderá ser em cash mesmo, realizado no recebimento das mercadorias._
+...
 
-5. Caso haja sucesso na forma de pagamento, o comerciante separará e embalará os produtos para a devida entrega.
+<br>
 
-6. O comerciante acionará o serviço de entrega pelo próprio aplicativo e o entregador que estiver cadastrado na aplicação, disponível e mais próximo do estabelecimento será escolhido.
+## Andamento do desenvolvimento Mobile:
+1. [X] Scripts de comunicação com WebSocket
+2. [X] Definir os controles de movimentação tridimensional
+3. [X] Definir a função de mensageiro Realtime
+4. [X] Configurar a interação de usuários Mobile com usuários Web
+5. [ - ] Ferramenta para estilização da loja: [Em desenvolvimento]()
+6. [ - ] Ferramenta para importação de produtos em 3D
+7. [ - ] Ferramenta para identificar usuários online dentro da loja
+8. [ - ] Ferramenta para expusar/banir usuários das lojas
+9. [ - ] Ferramenta para mover usuário de ambiente
+10. [ - ] Ferramenta para realizar pagamento online
+11. [ - ] Ferramenta para visualizar compras realizadas
+12. [ - ] Ferramenta para visualizar vendas realizadas/pendentes
+13. [ - ] Ferramenta para visualizar rotas para entregas
 
-7. O entregador escolhido poderá aceitar ou não aquele serviço de entrega, isso dependerá da tara da demanda e do seu veículo, caso não aceite, a requisição irá para o próximo entregador.
+...
 
-8. O usuário receberá os produtos e o entregador realizará a cobrança do pagamento, se for em cach e finalizará o serviço inserindo na aplicação dele o código chave da demanda disponibilizada pelo usuário. _Se o pagamento for em cash, o entregador deverá retornar ao comerciante para entregar o valor._
+<br>
 
-9. **(Opcional)** > Após a entrega, o usuário poderá classificar o conjunto do serviço com a nota de uma a cinco estrelas, então esta nota irá para a coleção do entregador, do comerciante e para o responsável pelo banco de dados local.
+Você pode acessar o repositório do desenvolvimento> [aqui](https://github.com/csviana/DVM).
 
-#### **Repositório:**
-Você pode acessar o repositório aqui > [repositório](https://github.com/csviana/DVM).
+#### **[Veja os Colaboradores](https://github.com/csviana/DVM/settings/collaboration)**
 
-#### **[Colaboradores](https://github.com/csviana/DVM/settings/collaboration)**
+## Licença: MIT
 
 Achou algum problema na página?
 

@@ -155,7 +155,9 @@ var options = {
 //Chamada das rotas predefinidas:
 var product_router = require('./routes/produtos');
 var loja_router = require('./routes/lojas');
+var venda_router = require('./routes/vendas');
 var functions_router = require('./routes/func');
+var usuario_router = require('./routes/usuarios');
 
 //Definindo a rota raiz
 app.get('/', function(req, res, next){
@@ -163,10 +165,16 @@ app.get('/', function(req, res, next){
 	next();
 });
 
+app.use('/apk',express.static('public/apk'));
+
+//Rotas dos usuários:
+app.use('/usuarios', usuario_router);
 //Rotas dos produtos:
 app.use('/produtos', product_router);
 //Rotas das lojas:
 app.use('/lojas', loja_router);
+//Rotas das vendas:
+app.use('/vendas', venda_router);
 //Rotas das funções:
 app.use('/func', functions_router);
 
