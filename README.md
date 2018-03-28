@@ -124,6 +124,8 @@ Para a funcionalidade do sistema, será necessário o armazenamento de informaç
 
 `Contudo, se encontrado alguma mensagem ofensiva nas conversas, é recomendável acionar o suporte para a devida análise`
 
+<br />
+
 Achou algum problema na página?
 
 Você pode checar a [documentação do GitHub](https://help.github.com/categories/github-pages-basics/) ou [entrar em contato comigo](https://www.facebook.com/cleirton.viana) para mais informações.
