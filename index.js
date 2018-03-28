@@ -102,7 +102,7 @@ io.on('connection', function (socket) {
 		socket.broadcast.emit('MOVE', newmove);
 		console.log(currentUser.name+" Move to "+currentUser.position);
 	});
-	
+	var newmsg;
 	socket.on('MSG', function (data){
 		// currentUser.name = data.name;
 		// currentUser.id   = data.id;

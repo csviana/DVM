@@ -3,7 +3,6 @@ Sobre este projeto:
 ### Desenvolvimento da Virtualização de Mercantis - DVM
 
 
-
 ## Objetivo:
 
 Criar um ambiente virtual e tridimensional onde o usuário interaja por meio de seu Smartphone com os produtos disponíveis fisicamente próximos à sua localização, podendo ele explorar diversos recursos até que adquira o produto ofertado, como apresentações em fotos e vídeos, disponibilidade física dos produtos com o fornecedor, tempo médio para entrega, relato de compradores anteriores, preços e formas de pagamento.
