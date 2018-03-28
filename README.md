@@ -2,7 +2,6 @@ Sobre este projeto:
 
 ### Desenvolvimento da Virtualização de Mercantis - DVM
 
-![](https://tecnologiasemsegredos.files.wordpress.com/2011/01/virtualizacao.png)
 
 
 ## Objetivo:
@@ -23,7 +22,7 @@ Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google
 
 <br>
 
-## Andamento do desenvolvimento Back-end:
+## Desenvolvimento Back-end:
 
 1. [X] Definir a plataforma de desenvolvimento do Back-end: [NodeJS]()
 2. [X] Definir o banco de dados a ser usado: [MongoDB]()
@@ -36,7 +35,7 @@ Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google
 
 <br>
 
-## Andamento do desenvolvimento Front-end:
+## Desenvolvimento Front-end:
 1. [X] Definir as bibliotecas utilizadas no Front-end: [Jquery]()
 2. [X] Definir os frameworks utilizados no Front-end: [Bootstrap]()
 3. [X] Definir o método de armazenamento web: [localStorage]()
@@ -62,7 +61,7 @@ Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google
 
 <br>
 
-## Andamento do desenvolvimento Mobile:
+## Desenvolvimento Mobile:
 1. [X] Scripts de comunicação com WebSocket
 2. [X] Definir os controles de movimentação tridimensional
 3. [X] Definir a função de mensageiro Realtime
