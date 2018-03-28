@@ -5,7 +5,7 @@ Sobre este projeto:
 ![](https://tecnologiasemsegredos.files.wordpress.com/2011/01/virtualizacao.png)
 
 
-## :bowtie: Objetivo:
+## Objetivo:
 
 Criar um ambiente virtual e tridimensional onde o usuário interaja por meio de seu Smartphone com os produtos disponíveis fisicamente próximos à sua localização, podendo ele explorar diversos recursos até que adquira o produto ofertado, como apresentações em fotos e vídeos, disponibilidade física dos produtos com o fornecedor, tempo médio para entrega, relato de compradores anteriores, preços e formas de pagamento.
 
@@ -87,6 +87,6 @@ Você pode acessar o repositório do desenvolvimento> [aqui](https://github.com/
 
 ## Licença: MIT
 
-Achou algum problema na página? :smirk:
+Achou algum problema na página?
 
 Você pode checar a [documentação do GitHub](https://help.github.com/categories/github-pages-basics/) ou [entrar em contato comigo](https://www.facebook.com/cleirton.viana) para mais informações.
