@@ -1,11 +1,11 @@
 ## Objetivo:
 
-Criar um ambiente virtual e tridimensional onde o usuário interaja por meio de seu Smartphone com os produtos disponíveis fisicamente próximos à sua localização, podendo ele explorar diversos recursos até que adquira o produto ofertado, como apresentações em fotos e vídeos, disponibilidade física dos produtos com o fornecedor, tempo médio para entrega, relato de compradores anteriores, preços e formas de pagamento.
+Criar um ambiente tridimensional onde o usuário interaja por meio de seu smartphone com os produtos e serviços ofertados, podendo ele explorar diversos recursos virtuais antes de efetuar o pagamento.
 
 <br />
 
 
-### Produção do Front-end > [aqui](http://csviana.ddns.net)
+### Página inicial > [aqui](http://csviana.ddns.net)
 
 >`
 A produção do Front-end está em constante atualização e caso perceba algum erro, basta clicar no botão "Limpar", localizado na parte inferior esquerda da página.
@@ -13,7 +13,7 @@ A produção do Front-end está em constante atualização e caso perceba algum 
 
 <br />
 
-### Produção da aplicação Android > [aqui](http://csviana.ddns.net/apk/remote.apk)
+### Aplicação para Android > [aqui](http://csviana.ddns.net/apk/remote.apk)
 
 > `
 Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google Play Store, com isso é necessário habilitar a opção para instalar aplicativos de fontes desconhecidas.
