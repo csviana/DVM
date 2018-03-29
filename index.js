@@ -102,19 +102,28 @@ io.on('connection', function (socket) {
 		socket.broadcast.emit('MOVE', newmove);
 		console.log(currentUser.name+" Move to "+currentUser.position);
 	});
+	
 	var newmsg;
 	socket.on('MSG', function (data){
 		// currentUser.name = data.name;
 		// currentUser.id   = data.id;
+	
+
+		try{
 		currentUser.msg = data.msg;
+	
 		newmsg={
 			id:currentUser.id,
+			date:Date.now(),
 			name:currentUser.name,
 			msg:data.msg
 		}
 		//Develve à todos os usuários logados que o usuário atual foi movimentado:
 		socket.broadcast.emit('MSG', newmsg);
 		console.log(currentUser.name+" Escreveu: "+currentUser.msg);
+		}catch(ex){console.log(ex);}
+
+
 	});
 });
 

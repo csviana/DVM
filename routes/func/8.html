@@ -1,12 +1,11 @@
 scripts£<script>
 var socket = io.connect('http://csviana.ddns.net:2558');
 if(localStorage.getItem("username") == "Desconhecido"){
-  var person = prompt("Please enter your name", "Harry Potter");
+  var person = prompt("Defina o seu nome", "");
 
 if (person == null || person == "") {
-    txt = "User cancelled the prompt.";
+  localStorage.setItem("username", "Intruso");
 } else {
-    txt = "Hello " + person + "! How are you today?";
     localStorage.setItem("username", person);
 }
 }
@@ -22,6 +21,32 @@ socket.emit('USER_CONNECT');
 var countuser=0;
 
 
+socket.on('MSG', function(data){
+  var id =data.id;
+  var name =data.name;
+  var agora = new Date(data.date);
+  var hora = agora.getHours() + ":" + agora.getMinutes() + ":" + agora.getSeconds();
+  var msg =data.msg;
+  $("#mensagens ul").prepend('<li class="alert-warning">'+name+': '+msg+' > ['+hora+']</li>');
+ countuser++;
+ $("#onlines").text("Online: "+countuser);
+});
+
+
+function sendMSG(){
+  if($("#sendmsg").val() != null && $('#sendmsg').val() != "" ){
+    console.log("não vazio");
+  var sendmsg={
+  id:IDUser,
+  name: NameUser,
+  msg:$("#sendmsg").val()
+};
+  socket.emit('MSG', sendmsg);
+  $("#mensagens ul").prepend('<li class="alert-success">eu: '+ $('#sendmsg').val()+'</li>');
+  $('#sendmsg').val("");
+}
+}
+
 socket.on('USER_CONNECTED', function(data){
  countuser++;
  $("#onlines").text("Online: "+countuser);
@@ -32,8 +57,13 @@ socket.on('USER_DISCONNECTED', function(data){
  $("#onlines").text("Online: "+countuser);
 });
 
+var IDUser;
+var NameUser;
+
 socket.on('PLAY', function (data) {
-  $("#usuario").text("IDUser: "+data.id+", nome: "+data.name+", ip: "+data.ip);
+  IDUser = data.id;
+  NameUser = data.name;
+  $("#usuario").text("Bem-vindo(a) "+NameUser+"!");
 });
 /*
 socket.on('USER_CONNECTED', function (data) {
