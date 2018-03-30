@@ -1,5 +1,7 @@
 scripts£<script>
-var socket = io.connect('http://csviana.ddns.net:2558');
+
+var socket = io.connect('http://csviana.ddns.net:2558',{ upgrade: false, transports: ['websocket']});
+
 if(localStorage.getItem("username") == "Desconhecido"){
   var person = prompt("Defina o seu nome", "");
 
@@ -24,11 +26,11 @@ var countuser=0;
 socket.on('MSG', function(data){
   var id =data.id;
   var name =data.name;
-  var agora = new Date(data.date);
-  var hora = agora.getHours() + ":" + agora.getMinutes() + ":" + agora.getSeconds();
+  var agora = new Date(Date.now());
+  var hora = agora.getHours().toString() + ":" + agora.getMinutes().toString() + ":" + agora.getSeconds().toString();
   var msg =data.msg;
-  $("#mensagens ul").prepend('<li class="alert-warning">'+name+': '+msg+' > ['+hora+']</li>');
- countuser++;
+$("#mensagens ul").prepend('<li class="row"><div class="col-md-12 text-left small border border-dark alert-warning">'+name+':<br>'+msg+' <a class="btn-success float-right small text-right"> ['+hora+']</a></div></li>');
+
  $("#onlines").text("Online: "+countuser);
 });
 
@@ -42,7 +44,9 @@ function sendMSG(){
   msg:$("#sendmsg").val()
 };
   socket.emit('MSG', sendmsg);
-  $("#mensagens ul").prepend('<li class="alert-success">eu: '+ $('#sendmsg').val()+'</li>');
+  var agora = new Date(Date.now());
+  var hora = agora.getHours().toString() + ":" + agora.getMinutes().toString() + ":" + agora.getSeconds().toString();
+  $("#mensagens ul").prepend('<li class="row"><div class="col-md-12 text-left small border border-dark alert-success">'+$('#sendmsg').val()+' <a class="btn-warning float-right small text-right"> ['+hora+']</a></div></li>');
   $('#sendmsg').val("");
 }
 }
@@ -63,6 +67,8 @@ var NameUser;
 socket.on('PLAY', function (data) {
   IDUser = data.id;
   NameUser = data.name;
+
+  $("#onlines").text("Online: "+countuser);
   $("#usuario").text("Bem-vindo(a) "+NameUser+"!");
 });
 /*

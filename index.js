@@ -1,5 +1,5 @@
 /**
-	* File: server.js
+	* File: index.js
 	* Description:  Script do servidor dentro do repositório https://github.com/csviana/DVM
 	* Author: Cleirton Viana
 	* Create Date: 06/03/2017
@@ -19,111 +19,122 @@ var count = 0;
 //Conexão ao socket:
 io.on('connection', function (socket) {
 	/*
-	var $ipAddress = socket.handshake.address;
-
-  if (!$ipsConnected.hasOwnProperty($ipAddress)) {
-
-  $ipsConnected[$ipAddress] = 1;
-*/
-
-
-  
-
-
-
-
+		var $ipAddress = socket.handshake.address;
+		
+		if (!$ipsConnected.hasOwnProperty($ipAddress)) {
+		
+		$ipsConnected[$ipAddress] = 1;
+	*/
+	
+	
+	
+	
+	
+	
+	
 	//Definindo o usuário atual:
 	var currentUser;
 	
 	//Informando que um painel de usuário está pronto para logar:
 	socket.on('USER_CONNECT', function (){
+		
 		console.log('Users Connected ');
 		//Informando ao Unity os dados dos usuários conectados:
 		for (var i = 0; i < clients.length; i++) {
-			socket.emit('USER_CONNECTED',{
-				name:clients[i].name,
-				id:clients[i].id,
-				msg:clients[i].msg,
-				position:clients[i].position,
-				ip: clients[i].ip,
-				foto:"nada"
-			});
-			console.log('User name '+clients[i].name+' is connected..');
+			try{
+				socket.emit('USER_CONNECTED',{
+					name:clients[i].name,
+					id:clients[i].id,
+					msg:clients[i].msg,
+					position:clients[i].position,
+					ip: clients[i].ip,
+					foto:"nada"
+				});
+				console.log('User name '+clients[i].name+' is connected..');
+			}catch(ex){console.log(ex);}
 		};
+		
 	});
 	
 	//Recebendo do Unity um novo usuário logado:
 	socket.on('PLAY', function (data){
-		currentUser = {
-			name:data.name,
-			id:shortId.generate(),
-			position:data.position,
-			msg: data.msg,
-			ip: socket.handshake.address,
-			foto:"nada"
-		}
-		
-		//Armazenando na Array local o novo usuário cadastrado: 
-		clients.push(currentUser);
-		//Retornando ao Unity a informação de que o usuário foi cadastrado:
-		socket.emit('PLAY', currentUser);
-		socket.broadcast.emit('USER_CONNECTED',currentUser);
+		try{
+			currentUser = {
+				name:data.name,
+				id:shortId.generate(),
+				position:data.position,
+				msg: data.msg,
+				ip: socket.handshake.address,
+				foto:"nada"
+			}
+			
+			//Armazenando na Array local o novo usuário cadastrado: 
+			clients.push(currentUser);
+			//Retornando ao Unity a informação de que o usuário foi cadastrado:
+			socket.emit('PLAY', currentUser);
+			socket.broadcast.emit('USER_CONNECTED',currentUser);
+		}catch(ex){console.log(ex);}
 	});
 	
 	//Recebendo do Unity que o usuário foi desconectado:
 	socket.on('disconnect', function (){
-			socket.broadcast.emit('USER_DISCONNECTED',currentUser);
+		
+		
 		//Procura na Array o usuário que foi desconectado e o deleta da Array local:
 		
-
-				for (var i = 0; i < clients.length; i++) {
-					try{
-			if (clients[i].name === currentUser.name && clients[i].id === currentUser.id) {
-				console.log("User "+clients[i].name+" id: "+clients[i].id+" has disconnected");
-				clients.splice(i,1);
-			}
-		}catch(ex){console.log(ex);}
+		
+		for (var i = 0; i < clients.length; i++) {
+			try{		
+				
+				if (clients[i].name === currentUser.name && clients[i].id === currentUser.id) {
+					socket.broadcast.emit('USER_DISCONNECTED',currentUser);
+					console.log("User "+clients[i].name+" id: "+clients[i].id+" has disconnected");
+					clients.splice(i,1);
+				}
+			}catch(ex){console.log(ex);}
 		};
-	
+		
+		
 	});
 	
 	//Recebe do Unity a atualização de movimento do usuário atual:
 	socket.on('MOVE', function (data){
 		// currentUser.name = data.name;
 		// currentUser.id   = data.id;
-		currentUser.position = data.position;
-		newmove={
-			id:currentUser.id,
-			name:currentUser.name,
-			position:currentUser.position
-		}
-		
-		//Develve à todos os usuários logados que o usuário atual foi movimentado:
-		socket.broadcast.emit('MOVE', newmove);
-		console.log(currentUser.name+" Move to "+currentUser.position);
+		try{
+			currentUser.position = data.position;
+			newmove={
+				id:currentUser.id,
+				name:currentUser.name,
+				position:currentUser.position
+			}
+			
+			//Develve à todos os usuários logados que o usuário atual foi movimentado:
+			socket.broadcast.emit('MOVE', newmove);
+			console.log(currentUser.name+" Move to "+currentUser.position);
+		}catch(ex){console.log(ex);}
 	});
 	
 	var newmsg;
 	socket.on('MSG', function (data){
 		// currentUser.name = data.name;
 		// currentUser.id   = data.id;
-	
-
+		
+		
 		try{
-		currentUser.msg = data.msg;
-	
-		newmsg={
-			id:currentUser.id,
-			date:Date.now(),
-			name:currentUser.name,
-			msg:data.msg
-		}
-		//Develve à todos os usuários logados que o usuário atual foi movimentado:
-		socket.broadcast.emit('MSG', newmsg);
-		console.log(currentUser.name+" Escreveu: "+currentUser.msg);
+			currentUser.msg = data.msg;
+			
+			newmsg={
+				id:currentUser.id,
+				name:currentUser.name,
+				msg:data.msg
+			}
+			//Develve à todos os usuários a mensagem que o usuário atual enviou:
+			socket.broadcast.emit('MSG', newmsg);
+			console.log(currentUser.name+" Escreveu: "+currentUser.msg);
 		}catch(ex){console.log(ex);}
-
-
+		
+		
 	});
 });
 
@@ -155,7 +166,7 @@ var key = fs.readFileSync('encryption/key.pem', 'utf8');
 var cert = fs.readFileSync( 'encryption/server.crt', 'utf8')
 
 var options = {
-    key: key,
+	key: key,
 	cert: cert,
 	ca: 'https://acme-v01.api.letsencrypt.org/directory'
 };

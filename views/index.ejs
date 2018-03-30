@@ -20,9 +20,17 @@
 		<div id="root"></div>
 		
 		<div id="painel">
-			<div class="alert-success" id="onlines"></div>
-			<div class="alert-success" id="usuario"></div>
-			<div id="mensagens" class="container"><input type="text" class="col-lg-10" id="sendmsg" /><button class="col-lg-2" onclick="sendMSG()">></button><ul class="col-lg-12 list-group"></ul></div>
+			
+			<div id="mensagens" class="container-fluid">
+			
+					<div class="row" id="onlines"></div>
+					<div class="row" id="usuario"></div>
+					<div class="row">
+						<input type="text" class="col-xs-10" id="sendmsg" />
+						<button class="col-xs-2" onclick="sendMSG()">></button>
+					</div>
+					<ul class="col-xs-12 list-group"></ul>
+			</div>
 			<button onclick="localStorage.clear();location.reload();">Limpar</button>
 		</div>
 		
