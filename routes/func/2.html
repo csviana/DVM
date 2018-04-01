@@ -1,52 +1,36 @@
-styles£<style>
-	#mensagem{
-	cursor: none;
-	visibility:hidden;
-	position:absolute;
-	height: 10%;
-	width: 50%;
-	top:45%;
-	left:25%;
-	background-color:powderblue;
-	color:darkblue;
-	border-radius: 25px;
-	font-size: 16pt;
-	}
-	
-
-	/*
-	.list-inline {
-  		display: flex;
-	}
-	.list-inline li{
-		  flex: 1;
-  	text-align: center;
-	}
-	
-	#homepage{
-		min-height: 2000px;
-  		padding-top: 70px;
-
-	}
-	*/
-	body{
-		background-color:brown;
-	}
-
-	#inicio{
-		background-color:whitesmoke;
-	}
-	
-	
-
-	.jumbotron *{
-		text-align: center;
-	}
-	#onlines, #usuario{
-color: white;		
-  text-shadow: black 0.1em 0.1em 0.2em;
-
-	}
-
-
-</style>
+formuser£
+<h4>Novo Cadastro:</h4>
+<form  id="newuser" onsubmit="sendUser(); return false;" action="/usuarios" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="off" >
+	<div class="form-group">
+		<label for="em">Email</label>
+		<input type="em" class="form-control input" id="em" name="em" aria-describedby="emHelp" placeholder="Defina o seu email" required autocomplete="new-password"> 
+		<small id="emHelp"  class="form-text text-muted">O email será a sua única identificação de acesso</small>
+	</div>
+	<div class="form-group">
+		<label for="pw">Senha</label>
+		<input type="password"  class="form-control input" id="pw" name="pw" placeholder="Defina a sua senha de acesso" required autocomplete="new-password" >
+	</div>
+	<div class="form-group">
+		<label for="nome">Nome</label>
+		<input type="text" autocomplete="off" class="form-control" id="nome" name="nome" placeholder="Defina o nome e sobrenome" required>
+	</div>
+	<div class="form-group">
+		<label for="eu">Endereço</label>
+		<input type="text" autocomplete="off" class="form-control" id="eu" name="eu" placeholder="Apenas rua ou avenida, número e município" required>
+		<input type="hidden" name="gm" value="1">
+	</div>
+	<div class="form-group">
+		<label for="tf">Telefones</label>
+		<input type="text" autocomplete="off" class="form-control" id="tf" name="tf" placeholder="Telefone Fixo(opcional)"  pattern="\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$">
+		<input type="text" autocomplete="off" class="form-control" name="tf" placeholder="Telefone Móvel:(99)99999-9999"  pattern="\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$" required>
+	</div>
+	<div class="form-check">
+		<input type="checkbox" class="form-check-input" id="tm" aria-describedby="tmHelp" required>
+		<label class="form-check-label" for="tm">Confirme que leu o termo de uso.</label><br>
+		<small id="termoHelp" class="form-text text-muted">Leia o termo de utilização > <a href="#termo">aqui</a>.</small>
+		<input type="hidden" name="ps" value="0,0,0">
+		<input type="hidden" name="rt" value="0,0,0">
+	</div>
+	<br>
+	<button type="submit" class="btn btn-danger">Cadastrar</button>
+</form>

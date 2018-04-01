@@ -18,56 +18,31 @@ var count = 0;
 
 //Conexão ao socket:
 io.on('connection', function (socket) {
-	/*
-		var $ipAddress = socket.handshake.address;
-		
-		if (!$ipsConnected.hasOwnProperty($ipAddress)) {
-		
-		$ipsConnected[$ipAddress] = 1;
-	*/
-	
-	
-	
-	
-	
-	
-	
 	//Definindo o usuário atual:
 	var currentUser;
 	
 	//Informando que um painel de usuário está pronto para logar:
 	socket.on('USER_CONNECT', function (){
-		
 		console.log('Users Connected ');
 		//Informando ao Unity os dados dos usuários conectados:
 		for (var i = 0; i < clients.length; i++) {
 			try{
-				socket.emit('USER_CONNECTED',{
-					name:clients[i].name,
-					id:clients[i].id,
-					msg:clients[i].msg,
-					position:clients[i].position,
-					ip: clients[i].ip,
-					foto:"nada"
-				});
-				console.log('User name '+clients[i].name+' is connected..');
+				socket.emit('USER_CONNECTED',{name:clients[i].name, id:clients[i].id, msg:clients[i].msg, position:clients[i].position, ip:clients[i].ip, foto:"nada"});
+				console.log('Usuário: '+clients[i].name+' conectado com IP:'+clients[i].ip);
 			}catch(ex){console.log(ex);}
 		};
-		
 	});
-	
 	//Recebendo do Unity um novo usuário logado:
 	socket.on('PLAY', function (data){
 		try{
 			currentUser = {
 				name:data.name,
-				id:shortId.generate(),
+				id:data.id || shortId.generate(),
 				position:data.position,
 				msg: data.msg,
-				ip: socket.handshake.address,
+				ip:socket.handshake.address,
 				foto:"nada"
-			}
-			
+			}	
 			//Armazenando na Array local o novo usuário cadastrado: 
 			clients.push(currentUser);
 			//Retornando ao Unity a informação de que o usuário foi cadastrado:
@@ -78,11 +53,7 @@ io.on('connection', function (socket) {
 	
 	//Recebendo do Unity que o usuário foi desconectado:
 	socket.on('disconnect', function (){
-		
-		
 		//Procura na Array o usuário que foi desconectado e o deleta da Array local:
-		
-		
 		for (var i = 0; i < clients.length; i++) {
 			try{		
 				
@@ -92,15 +63,11 @@ io.on('connection', function (socket) {
 					clients.splice(i,1);
 				}
 			}catch(ex){console.log(ex);}
-		};
-		
-		
+		};		
 	});
 	
 	//Recebe do Unity a atualização de movimento do usuário atual:
 	socket.on('MOVE', function (data){
-		// currentUser.name = data.name;
-		// currentUser.id   = data.id;
 		try{
 			currentUser.position = data.position;
 			newmove={
@@ -117,10 +84,6 @@ io.on('connection', function (socket) {
 	
 	var newmsg;
 	socket.on('MSG', function (data){
-		// currentUser.name = data.name;
-		// currentUser.id   = data.id;
-		
-		
 		try{
 			currentUser.msg = data.msg;
 			
@@ -146,6 +109,7 @@ console.log("------- RECEBENDO DADOS DOS CLIENTES UNITY -------");
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var compression = require('compression');
 var path = require('path');
 
 //Definindo a engine view da API
@@ -157,6 +121,7 @@ app.set('views', path.join(__dirname, '/views'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
+app.use("/", express.static("imgs"));
 //Carregando os pacotes para a comunicação segurança
 const https = require('https');
 const fs = require('fs');
@@ -197,7 +162,7 @@ app.use('/lojas', loja_router);
 app.use('/vendas', venda_router);
 //Rotas das funções:
 app.use('/func', functions_router);
-
+app.use(compression());
 //iniciando a aplicação:
 app.listen(80);
 //Abrind a conexão segura:

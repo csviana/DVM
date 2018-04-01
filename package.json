@@ -8,6 +8,7 @@
     "scripts": {
         "dev": "nodemon",
         "prestart": "start mongod --storageEngine=mmapv1 --dbpath ./data",
+        "repair": "start mongod --storageEngine=mmapv1 --dbpath ./data --repair",
         "poststart": "start mongo admin --eval \"db.getSiblingDB('admin').shutdownServer()\"",
         "pretest": "start mongod --dbpath data",
         "test": "mocha test",
@@ -21,11 +22,14 @@
     },
     "dependencies": {
         "body-parser": "^1.18.2",
+        "compression": "^1.7.2",
         "ejs": "^2.5.7",
         "express": "^4.15.5",
         "formidable": "^1.2.1",
         "mongodb": "^3.0.4",
         "mongojs": "^2.5.0",
+        "multer": "^1.3.0",
+        "npm": "^5.8.0",
         "request": "^2.82.0",
         "shortid": "^2.2.8",
         "socket.io": "^2.0.4"

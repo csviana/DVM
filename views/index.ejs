@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html>
 	<head>
+		<link rel="manifest" href="/manifest.json">
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<meta name="description" content="Nabodega Virtual é um projeto para virtaulização de sepermercados">
 		<meta name="author" content="Cleirton Viana">
 		<link rel="icon" href="../../favicon.ico">
@@ -22,15 +23,17 @@
 		<div id="painel">
 			
 			<div id="mensagens" class="container-fluid">
-			
-					<div class="row" id="onlines"></div>
-					<div class="row" id="usuario"></div>
-					<div class="row">
-						<input type="text" class="col-xs-10" id="sendmsg" />
-						<button class="col-xs-2" onclick="sendMSG()">></button>
-					</div>
-					<ul class="col-xs-12 list-group"></ul>
+				<div class="row sombra" id="onlines"></div>
+				<div class="row sombra" id="usuario"></div>
+				<br>
+				<div class="row">
+					<h4 class="col-xs-12 sombra">Bate-papo:</h4>
+					<form onsubmit="sendMSG();return false;"><input type="text" class="col-xs-10" id="sendmsg" />
+					<input type="submit" class="col-xs-2" value=">"/></form>
+				</div>
+				<ul class="col-xs-12 list-group"></ul>
 			</div>
+			<br><br>
 			<button onclick="localStorage.clear();location.reload();">Limpar</button>
 		</div>
 		
@@ -53,12 +56,16 @@
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200 && xhttp.responseText != 'null') {
-						localStorage.setItem("f"+localStorage.getItem("func"), xhttp.responseText);
-						var campos  = localStorage.getItem("f"+localStorage.getItem("func")).split("£");  
-						if(campos.length==2) {
-							var element = eval ("(" + "document.getElementById('"+campos[0]+"').innerHTML="+ JSON.stringify(campos[1])+")");
-							localStorage.setItem("func", parseInt(localStorage.getItem("func")) + 1);
-						}           
+						try{
+							var campos = xhttp.responseText.split("£");
+							if(campos.length==2) {
+								localStorage.setItem("f"+localStorage.getItem("func"), xhttp.responseText);
+								var element = eval ("(" + "document.getElementById('"+campos[0]+"').innerHTML="+ JSON.stringify(campos[1])+")");
+								localStorage.setItem("func", parseInt(localStorage.getItem("func")) + 1);
+							}
+							}catch(ex){
+							location.reload();
+						}     
 						
 						clearTimeout(timer);
 						timer = setTimeout(() => {

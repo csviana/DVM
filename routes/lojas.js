@@ -12,8 +12,9 @@ const db = mongo("dvm", ['lojas']); //Carregando o mongodb em localhost
 const request = require("request");
 const fs = require("fs");
 
-//Defina a sua Sua chave da api Google Maps para poder fazer o download dos mapas
-var key = ""; 
+//Esta chave é temporária e limitada para o host csviana.ddns.net
+//Altere-a para a sua chave da API Google Maps
+var key="AIzaSyDoP_k20pvexaV5P-_Z2kOenxD8q3my3jY";
 
 //Definindo a rota para o carregamento de todas as lojas
 router.get("/", (req, res, next)=>{

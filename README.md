@@ -1,3 +1,4 @@
+![](http://csviana.ddns.net/launcher-icon-4x.png)
 ## Objetivo:
 
 Criar um ambiente tridimensional onde o usuário interaja por meio de seu smartphone com os produtos e serviços ofertados, podendo ele explorar diversos recursos virtuais antes de efetuar o pagamento.
@@ -5,7 +6,7 @@ Criar um ambiente tridimensional onde o usuário interaja por meio de seu smartp
 <br />
 
 
-### Página inicial > [aqui](http://csviana.ddns.net)
+### Página inicial > [aqui](http://csviana.ddns.net/)
 
 >`
 A produção do Front-end está em constante atualização e caso perceba algum erro, basta clicar no botão "Limpar", localizado na parte inferior esquerda da página.
@@ -26,6 +27,14 @@ Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google
 
 <br />
 
+### Atividades em andamento:
+>Restruturação do Front-end para carregar o layout principal com uma breve animação de maneira instantânia e gerenciar o carregamento de microfunções em segundo plano.
+
+Atualizada em: [01-04-2018 14:15]()
+
+<br />
+
+
 ### Desenvolvimento Back-end:
 
 1. [X] Definir a plataforma de desenvolvimento: [NodeJS]()
@@ -43,21 +52,21 @@ Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google
 1. [X] Definir as bibliotecas utilizadas: [Jquery]()
 2. [X] Definir os frameworks utilizados: [Bootstrap]()
 3. [X] Definir o método de armazenamento web: [localStorage]()
-4. [X] Definir o CSS do Bootstrap: [routes/func/1.html]()
-5. [X] Definir o CSS personalizado: [routes/func/2.html]()
-6. [X] Definir a estrutura HTML5 da Homepage: [routes/func/3.html]()
-7. [X] Definir a estrutura HTML5 do Root: [routes/func/4.html]()
-8. [X] Definir as functions do Jquery: [routes/func/5.html]()
-9. [X] Definir as functions do WebSocket: [routes/func/6.html]()
-10. [X] Definir as functions do Bootstrap: [routes/func/7.html]()
-11. [X] Definir as functions personalizadas: [routes/func/8.html]()
-12. [ ] Definir o formulário para o cadastramento de usuários
-13. [ ] Definir o formulário para o cadastramento de lojas
-14. [ ] Definir o formulário para o cadastramento de vendas
-15. [ ] Definir o formulário para o cadastramento de produtos
-16. [ ] Definir o formulário para o cadastramento de funções
-17. [ ] Definir o layout para o login de usuários via web
-18. [X] Definir o layout para o mensageiro Realtime
+4. [X] Definir o CSS do Bootstrap
+5. [X] Definir o CSS personalizado
+6. [X] Definir a estrutura HTML5 da Homepage
+7. [X] Definir a estrutura HTML5 do Root
+8. [X] Definir as functions do Jquery
+9. [X] Definir as functions do WebSocket
+10. [X] Definir as functions do Bootstrap
+11. [X] Definir as functions personalizadas
+12. [X] Definir o layout para o mensageiro Realtime
+13. [X] Definir o layout para o login de usuários via web
+14. [X] Definir o formulário para o cadastramento de usuários
+15. [ ] Definir o formulário para o cadastramento de lojas
+16. [ ] Definir o formulário para o cadastramento de vendas
+17. [ ] Definir o formulário para o cadastramento de produtos
+18. [ ] Definir o formulário para o cadastramento de funções
 19. [ ] Definir o mapa para geolocalização das rotas de entrega
 20. [ ] Definir os métodos para pagamentos online
 
@@ -70,7 +79,7 @@ Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google
 2. [X] Definir os controles de movimentação tridimensional
 3. [X] Definir a função de mensageiro Realtime
 4. [X] Configurar a interação de usuários Mobile com usuários Web
-5. [ ] Ferramenta para estilização da loja: [Em desenvolvimento]()
+5. [ ] Ferramenta para estilização da loja
 6. [ ] Ferramenta para importação de produtos em 3D
 7. [ ] Ferramenta para identificar usuários online dentro da loja
 8. [ ] Ferramenta para expulsar/banir usuários das lojas

@@ -3,6 +3,8 @@
 public/
 encryption/
 data/
+encryption/*
+data/*
 
 *.jpg
 *.png

@@ -1,6 +1,6 @@
 /**
-	* File: produtos.js
-	* Description:  Script responsável pelas rotas dos produtos - repositório https://github.com/csviana/DVM
+	* File: vendas.js
+	* Description:  Script responsável pelas rotas das vendas - repositório https://github.com/csviana/DVM
 	* Author: Cleirton Viana
 	* Create Date: 28/03/2017
 */
