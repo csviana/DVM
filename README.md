@@ -1,4 +1,4 @@
-![](http://csviana.ddns.net/launcher-icon-4x.png)
+# ![](http://csviana.ddns.net/launcher-icon-4x.png)
 ## Objetivo:
 
 Criar um ambiente tridimensional onde o usuário interaja por meio de seu smartphone com os produtos e serviços ofertados, podendo ele explorar diversos recursos virtuais antes de efetuar o pagamento.
