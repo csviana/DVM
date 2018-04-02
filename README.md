@@ -8,14 +8,14 @@ Criar um ambiente tridimensional onde o usuário interaja por meio de seu smartp
 
 ### Página inicial > [aqui](http://csviana.ddns.net/)
 
-> ##### A produção do Front-end está em constante atualização e caso perceba algum erro, basta clicar no botão "Limpar", localizado na parte inferior esquerda da página.
+> A produção do Front-end está em constante atualização e caso perceba algum erro, basta clicar no botão "Limpar", localizado na parte inferior esquerda da página.
 
 
 <br />
 
 ### Aplicação para Android > [aqui](http://csviana.ddns.net/apk/remote.apk)
 
-> ##### Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google Play Store, com isso é necessário habilitar a opção para instalar aplicativos de fontes desconhecidas.
+> Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google Play Store, com isso é necessário habilitar a opção para instalar aplicativos de fontes desconhecidas.
 
 
 <br />
@@ -26,7 +26,7 @@ Criar um ambiente tridimensional onde o usuário interaja por meio de seu smartp
 <br />
 
 ### Atividades em andamento:
-> Restruturação do Front-end para carregar o layout principal com uma breve animação de maneira instantânia e gerenciar o carregamento de microfunções em segundo plano.
+##### Restruturação do Front-end para carregar o layout principal com uma breve animação de maneira instantânia e gerenciar o carregamento de microfunções em segundo plano.
 
 Atualizada em: [01-04-2018 14:15]()
 
@@ -112,7 +112,7 @@ Para a funcionalidade do sistema, será necessário o armazenamento de informaç
 * IP do último acesso > Apenas para proteção de ataque hacker
 * Momento do último acesso > Apenas para proteção de ataque hacker e geração relatórios de utilização.
 
-> ##### É fortemente recomendado que informações de cadastro não sejam repassadas a terceiros, exceto em caso de ação judicial, assim fortalecerá a credibilidade dos usuários com o sistema`
+> É fortemente recomendado que informações de cadastro não sejam repassadas a terceiros, exceto em caso de ação judicial, assim fortalecerá a credibilidade dos usuários com o sistema`
 
 #### Compras:
 * Produtos comprados
@@ -123,13 +123,13 @@ Para a funcionalidade do sistema, será necessário o armazenamento de informaç
 * Classificação do serviço de entrega > Opcional
 * Relato sobre a entrega > Opcional
 
-> ##### Apenas a classificação do serviço de entrega e relato sobre a entrega serão compartilhados com terceiros, com a finalidade de aprimorar os produtos e serviços ofertados no sistema. Já os dados dos cartões e contas bancárias não passarão sequer por este sistema, pois as validações de compras serão feitas pelas próprias operadoras de crédito. É extremamente importante informar que os usuários NUNCA forneçam dados pessoais fora do cadastro e dados de cartões só deverão ser fornecidos na ferramenta apropriada
+> Apenas a classificação do serviço de entrega e relato sobre a entrega serão compartilhados com terceiros, com a finalidade de aprimorar os produtos e serviços ofertados no sistema. Já os dados dos cartões e contas bancárias não passarão sequer por este sistema, pois as validações de compras serão feitas pelas próprias operadoras de crédito. É extremamente importante informar que os usuários NUNCA forneçam dados pessoais fora do cadastro e dados de cartões só deverão ser fornecidos na ferramenta apropriada
 
 
 #### Conversas:
 * Nenhuma conversa será armazenada em banco de dados, pois recomendamos a expressão individual nas comunicações e bloqueio automático de palavras de baixo calão.
 
-> ##### Contudo, se encontrado alguma mensagem ofensiva nas conversas, é recomendado o acionamento do suporte para a devida análise
+> Contudo, se encontrado alguma mensagem ofensiva nas conversas, é recomendado o acionamento do suporte para a devida análise
 
 <br />
 
