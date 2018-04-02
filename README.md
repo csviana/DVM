@@ -5,33 +5,12 @@ Criar um ambiente tridimensional onde o usuário interaja por meio de seu smartp
 
 <br />
 
-
-### Página inicial > [aqui](http://csviana.ddns.net/)
-
-> A produção do Front-end está em constante atualização e caso perceba algum erro, basta clicar no botão "Limpar", localizado na parte inferior esquerda da página.
-
-
-<br />
-
-### Aplicação para Android > [aqui](http://csviana.ddns.net/apk/remote.apk)
-
-> Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google Play Store, com isso é necessário habilitar a opção para instalar aplicativos de fontes desconhecidas.
-
-
-<br />
-
-### Repositório do desenvolvimento > [aqui](https://github.com/csviana/DVM)
-
-
-<br />
-
 ### Atividades em andamento:
 ##### Restruturação do Front-end para carregar o layout principal com uma breve animação de maneira instantânia e gerenciar o carregamento de microfunções em segundo plano.
 
 Atualizada em: [01-04-2018 14:15]()
 
 <br />
-
 
 ### Desenvolvimento Back-end:
 
@@ -90,6 +69,25 @@ Atualizada em: [01-04-2018 14:15]()
 ...
 
 <br>
+
+### Página inicial > [aqui](http://csviana.ddns.net/)
+
+> A produção do Front-end está em constante atualização e caso perceba algum erro, basta clicar no botão "Limpar", localizado na parte inferior esquerda da página.
+
+
+<br />
+
+### Aplicação para Android > [aqui](http://csviana.ddns.net/apk/remote.apk)
+
+> Como a aplicação está sob desenvolvimento, ainda não foi publicada no Google Play Store, com isso é necessário habilitar a opção para instalar aplicativos de fontes desconhecidas.
+
+
+<br />
+
+### Repositório do desenvolvimento > [aqui](https://github.com/csviana/DVM)
+
+
+<br />
 
 #### **[Veja os Colaboradores](https://github.com/csviana/DVM/settings/collaboration)**
 
