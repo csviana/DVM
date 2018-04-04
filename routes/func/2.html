@@ -1,36 +1,52 @@
-formuser£
-<h4>Novo Cadastro:</h4>
-<form  id="newuser" onsubmit="sendUser(); return false;" action="/usuarios" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="off" >
-	<div class="form-group">
-		<label for="em">Email</label>
-		<input type="em" class="form-control input" id="em" name="em" aria-describedby="emHelp" placeholder="Defina o seu email" required autocomplete="new-password"> 
-		<small id="emHelp"  class="form-text text-muted">O email será a sua única identificação de acesso</small>
-	</div>
-	<div class="form-group">
-		<label for="pw">Senha</label>
-		<input type="password"  class="form-control input" id="pw" name="pw" placeholder="Defina a sua senha de acesso" required autocomplete="new-password" >
-	</div>
-	<div class="form-group">
-		<label for="nome">Nome</label>
-		<input type="text" autocomplete="off" class="form-control" id="nome" name="nome" placeholder="Defina o nome e sobrenome" required>
-	</div>
-	<div class="form-group">
-		<label for="eu">Endereço</label>
-		<input type="text" autocomplete="off" class="form-control" id="eu" name="eu" placeholder="Apenas rua ou avenida, número e município" required>
-		<input type="hidden" name="gm" value="1">
-	</div>
-	<div class="form-group">
-		<label for="tf">Telefones</label>
-		<input type="text" autocomplete="off" class="form-control" id="tf" name="tf" placeholder="Telefone Fixo(opcional)"  pattern="\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$">
-		<input type="text" autocomplete="off" class="form-control" name="tf" placeholder="Telefone Móvel:(99)99999-9999"  pattern="\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$" required>
-	</div>
-	<div class="form-check">
-		<input type="checkbox" class="form-check-input" id="tm" aria-describedby="tmHelp" required>
-		<label class="form-check-label" for="tm">Confirme que leu o termo de uso.</label><br>
-		<small id="termoHelp" class="form-text text-muted">Leia o termo de utilização > <a href="#termo">aqui</a>.</small>
-		<input type="hidden" name="ps" value="0,0,0">
-		<input type="hidden" name="rt" value="0,0,0">
-	</div>
-	<br>
-	<button type="submit" class="btn btn-danger">Cadastrar</button>
-</form>
+styles£<style>
+	#mensagem{
+	cursor: none;
+	visibility:hidden;
+	position:absolute;
+	height: 10%;
+	width: 50%;
+	top:45%;
+	left:25%;
+	background-color:powderblue;
+	color:darkblue;
+	border-radius: 25px;
+	font-size: 16pt;
+	}
+	body{
+		background-color:brown;
+	}
+
+	#inicio{
+		background-color:whitesmoke;
+	}
+	
+	
+
+	.jumbotron *{
+		text-align: center;
+	}
+	.sombra{
+color: white;		
+  text-shadow: black 0.1em 0.1em 0.2em;
+
+	}
+
+#perfil{
+	margin: 0 auto;
+	height: 50px;
+	width: 50px;
+	border:0;
+	border-radius: 100%;
+	background-image: url('data:image/webp;base64,UklGRkQEAABXRUJQVlA4WAoAAAAQAAAAMQAAMQAAQUxQSBwBAAABZ6E4kqQ0yAruf4qIiHA7c8L+hQDfJSlFcwgEHG1UNsFUFRxGkm1a+/zet21j84/w45w9CUT0n5HbSIrWy3RqegMMik5/dbzfH9fTqt8u4Ff2dvzj0HPeqOY0mVUwyyY0G6ewad50eLZgMaLT0LAt6bb6u+0pcFCfk+Tm3xcaox9bTZn6a0ve1Ek+lzmF5p8hTKny649KCwAZxTKgR7EecKHYBTnl8i7luiPKDbeU250pd75R7vai3CtiibiIeCXiRxGRExGdERkQkGUhmRxQLfQVaRVQ9YqAyhpSvQM6hKELKTvqihLrgG4a37GBMZ0Gtsnj6Zo82rBJHTenqWOCmhnPKrgUvdO/O8eeYrQr2oPV6fp4XA+rYctyB1ZQOCACAwAA0A8AnQEqMgAyAD6BOJRHpSOiITAO+KAQCWQA0PvofHYC9rGNLtjueq9G28zbzbWcvCk/0PKib6yR8cN/fPUn5D0+18KhsU0U7/bry7UCmBqn/AVQXom9wZbieDdEc1uDGtBvm9F7fubth116FWhWwASbNIEqO2id4kNml18dWlMVryfWJHwAAP79nAjrjO4TubzErkiFYKGD42rSb4I1hIfwUK0hBesYnpNpVwxEn/w/qT8YYvgkYgQ0QZVja716HS2/r7I9AQL5KvKr+qaFGDezvdIbbdzEdy1b5eetk0Ak++G8hpGGIg9tMw1If6QN5n447dymUEzR2enySapumS1sEpKOJlWtsKNXtpDbsn9JOflU635nUbHaqxVSjDd0prCA83rb3JoFNPzd3o9xx1QcgdTrc+v10EDNR1dh6jrVDYc69LIdoi/mvS78Wr+og8PzcSjiT9pBVkofCL1JLOrW84n/KHFKzfQ/8ocUvcvUifd8sMdlKsmjx1TE5+cFJOeFApFno1o0tjUvWfKrP90G1DwKzu62aylnOv1pPh2/2I7zriNcR35Pca6L9oeKVyHZqcD+ry5ju4SnGGNxuTpqBUvtsE0/Nsj8QZwDZxRohrKMuEVM2IglIw/kdG4LpnjeKKkjnW3nKqmW1FQrMhqF+RL7XZ2Rd62SsAmi7Isk0l6PeZ3S0XPKKw5H/hOY3gqR8yQ8ld+ePqD+S8WaAldPXm4aWb9NJxwjgwTOw3yovYC7ccNRVerEais1l2fyKDMvGivttnEHo6wxnbSyky2e79LhTW5mM6i4PiVLhk/llGYVhFY7lkrihJZvJ7sFCnkeQeYw44DjR5j5rncsqNPv2BriqR7EoNcSUzHFR9Z9vyEGqOMO+6h4xZL8jAbGgGfFDnXEw9BMB5M/3ie+3qhVqu0LXen4OAJ7VkLNoNlZBxutr34aP9x7O0E2l2TDMt4Tx4egNk4cx8kEuSY5/2I8NkbM4MQuBJ2lVoFkx0fJbXUA3l71qMAaIFSiDqi+AAA=');
+	}
+
+
+#projeto{
+	border:0;
+	margin: 0 auto;
+	height: 50px;
+	width: 50px;
+	background-image: url('data:image/webp;base64,UklGRhAEAABXRUJQVlA4IAQEAACwEwCdASoyADIAPpE4mEgloyKhLhtqqLASCWwA0Edt+T/jx7ItodoDvBiBQj9t3+uXRIepXyQOsO9C/9iPTW/aP4Zf21/ZX2i7u//JeEtfg3y/MV69ip1I1ceN70QtARIZxVs8FXfM8dw+Hxa4Js4y/BL/kuFf+7Qev1GOAplNoNivlmeMyCoM0S0hLdNXymXtPTkH8lP/yuQVxGUC+2is+jwXWGMYAP76ze915vFFIO+2Yd/lq3S6mlRmReia7KQrvc7WigLohz1vepVHwDNfvWD6JiYkFsFWbE73ZCsv8/Pkg/KihXPxu/RYj5AoeKrA59UJprfdQ3mJb3UAf5yYAro6iTKORyjOvE//x2eqyhq7idOEDtuYIFJ/knufl3yV3T+wWpneZMl83hvW5HCyLonnHnWLZIiwLAH/zZ90mk3QIBc7N4QP396yyfaMXR7B/Jm82icox0o1GJZLVX8QCb/1JkbfxGfLeDOF0FbOeiGI/fOzX6/6TfsesmCX8yZNHu3R3kFCH4cie8eM6VUuC4T13xV/ik2QAw7ElgwLNbS1ttkmlxcDUqY5dJ6/oX9duOJ8cEHkTs86Mri03lscKE5xPX+iyn3YGCEsN0AywyeFruA1dLwKAQuabebfVhkwis398RmsqC4qqcFaUnLbDQ1YQADUuCuepouDP5QVAiOveld0j+lQbffY/mXGBWsUUe3Ol/pVWuFI/8qQCf7/T6YMA05td5PJ/BAqEPA+uQMZMjKc/Wb9r544GO5tm616jOYgualuHBnxUemN/wIqsotDr/gSa98fcRsTySfug+mthIfbJ82dVeM4kTQL3j26iaTJN++YorwpyyIzOShxIrMMIAW9+JgO9VFR3oXJgxcu/kt+tW3Wqop+d7LLpnfKx3vzAdOrDyO27dbhcG9ACkbcxjb6+I9HlX/vGnVKw4/HL/faIUqGxABEw1gu+iRVUjdTIDpsCkW8yOimNN6/2qMhwcN0H8XlBx520jeqhgKxXPMu3jqoCVXcHkyKYPl8p6C/Z3hvpnYGPV90I/KmYc/8K0uRPOvygSw04LsXV/gbS5TQG0HJ8/nN6b+URswDaKD2zqUufBtDt96KUsvYidKyqxuCnYGLxGWYZ8r1/lUSJUZycB8vVxRTI4zCj5RMADqf/UcQxtrWXG3EbZdSYz/+MTcTZiUGz1Ixf35iFK386tgFg2VbV5xNvCPmSeiSs0750d9eqluT5XxFzxOVkWTzl8ij18VXB+xzCq6mIxCRyBHCZPqIEh163NlQP2cFwC4xllVi7tvtTJp4HqOgbEk+o4dW/ytAPze6dtHWIGCETkPvAH54qAAhvHgsGRRREq8wBcx5u9xhzzivue0AAAAAAA==');
+	border-radius: 100%;
+}
+</style>

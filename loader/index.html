@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="manifest" href="/manifest.json">
+		<meta charset="utf-8">
+		<title>DVM</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Nabodega Virtual é um projeto para virtaulização de sepermercados">
+		<meta name="author" content="Cleirton Viana">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="apple-touch-icon" sizes="128x128" href="launcher-icon-3x.webp">
+		<meta name="theme-color" content="#317EFB"/>
+		<html lang="pt-br">
+	</head>
+	<body >
+		<div id="homepage">
+			<img id="loading" class="img-circle img-responsive" />
+			
+		</div>
+		<div id="painel">
+			<button onclick="localStorage.clear();location.reload();" autofocus>Limpar</button>
+			<label class="sombra" id="status"></label>
+		</div>
+		<style id="bootstrapcss"></style>
+		<style id="styles"></style>
+		<script id="jquery" async></script>
+		<script id="bootstrapjs" async></script>
+		<script id="socketio" async></script>
+		<script id="scripts" async></script>
+		<style>
+			@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+		#loading{
+			border-radius: 100%;
+			-webkit-animation: rotating 2s linear infinite;
+  			-moz-animation: rotating 2s linear infinite;
+  			-ms-animation: rotating 2s linear infinite;
+  			-o-animation: rotating 2s linear infinite;
+  			animation: rotating 2s linear infinite;
+	
+			line-height: 100px;
+			text-align: center;
+			width: 100px;
+			height: 100px;
+			border: 0 none;
+			margin: 0 auto;
+			text-decoration: none;
+			background-image: url('data:image/webp;base64,UklGRtwEAABXRUJQVlA4INAEAACwHACdASpkAGQAPo0+mkelJCKhKdd9aKARiWkAFebf4Ds//wdkb+4vVH6id4O1n/jt6LAB+Y/2TvTNSNVjOv/1fjN+ofYG8oD2JIst9J0uLr89bzvA66l3h2XkbO6Zy6/xw169k85aF8UbTQuBuT9NvwctFUkkHGh1GOhqnuxbz4+xKGo33u87mbU4cIPehvE8f4A+yc8Umk/5YxlnyrXFpiXU00GNJoznw8Mrm/XeT+aTdiinYA886lqx2vt4aMeLgBZWV/9UmtO8HZ0Qx2d+khys8NA3RPqrCJAuVkc4uLQd1uTI9GADx2O4GjSwAP77lEckcKhEoW6xcF+SeKdi0JNDWV2xqpQE5YNRdVYsT+x1S+ne5+r9UW0NJ2KZYwxNwY63oLerTb1PnJVgxT2xuUG1wZ6pN3AbPnkRZk4mYuiG7IK0bpdOa4D71qeU6ZvpFA9U+IHxqE3L2sx3RCh4PjgOTL3X87iahKWvt588nPGSfmGnSz5mBscw5NAjYXhlG4arZhRv4b54cFg5gfKg3/8lp54ioA+YZ5OxjgpAtH0MyAA8iP3FBXz215BQL0+4Xeir0X52XetOYNQKys/rVdrw9zG9+D5cjPkaHhHnLR9xK6Is9qDRMj++JM+Nq/VrxYAKcpLwC1/CMapEtpkdJR/5yz6Q2Gqnm7Z2jCXVVtb6k75gvg2XkM2bPMPymj9+G7LQ0QDl3nGkRDSSjkRhvI3sRY0UJQgurOokAsofQO0tI7NogFwcjC0QIXqjkAfzThAwKyduiG4Sh0i9+2leShysnV0PU/h8jLBv4TZkCXvjhvgYVDTh2Dlg1mQcsdI8VpIHUdRjd7gVpuTQMJXP9i/Y+wdgGi1d4PyutyDVi6Kk6OIOsDiwrgbZKZzpTeu9ALdqToo4s++rcfK3mSSFyTzeQJKRVMv90G8vYqFQXh5k3sN0m2zbMkSFBMn3hDgSmiyZldXX/Jq0j6zV83u4cOosQcjJ0joE9iFgnTWslp8+bYR2iSGhkn2BMGF+KqvC/C71q+9dp/r6/XxwYvVs1vTcph3kGGqhUpTB6JRg21KYl06pYe67Gtr2vsZFtZ4OO6lAykSzHNNWfuVlkFrr0NkFuf6mNX082awze9eVzvKVGjyr7Yf97BXSi/kU83eXN2lqYb2sErgp8ZAICs0MFg0V9ZzdK4R5WRoUb3zOw2r2xpAmdnzMf/yCx7qlCbaAyxEKOcHOXGdqwEtt3ghEgikrZhmxvx8k6xoA3JVieMZgbHbXb/3+XSf8rP/kqvb4684BsDSd+kokQQ4FsB+vXEAaR//smSIvoLTZHrl+Vfh6nGtF6duVsrHKdHLMf+qps3een77BBLBkumpx74PUyNI1X6DzRkbbsA5sMEHORMugyx9K0R5/9NG/L4f/WOx0VHU6PyGJ2q0sALDS/0egNWT6uPfWoL+IHwKqH1uYsn+sWMqLecyC+yYYhslJ9vwV7QPc/amsBXrM/kI8WmCMsN18Ai9VXQ+5pPnUarLdatlgIY5RIu9q5AA/A///kMyTk9Ids+pVXqj6z+pXBYgiqq37U740rSuDDIvlojyFqdbXzLmBttiJKuTr4IMoFKSNqpS0V8GC+VPK5ivR2RFCNfnX1KbrzROV3mVsAAAAAA==');
+			
+		}
+		</style>
+		<script async>
+		
+		window.addEventListener('beforeinstallprompt', function(e) {
+  console.log('beforeinstallprompt Event fired');
+  e.preventDefault();
+  return false;
+});
+		if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js', {scope: '/'})
+  .then(function(reg) {
+   
+    console.log('Registration succeeded. Scope is ' + reg.scope);
+  }).catch(function(error) {
+      console.log('Registration failed with ' + error);
+  });
+}
+
+			var timer;
+			var time=1;
+			var status = 0;
+			function isload(){
+				if (status == 0){
+				
+					for (let index = 1; index < localStorage.length-2; index++) {
+						var campos  = localStorage.getItem("f"+index).split("£");  
+						if(campos.length==2)            
+						var element = eval ("(" + "document.getElementById('"+campos[0]+"').innerHTML="+ JSON.stringify(campos[1])+")");
+					}
+				}
+				if(status != localStorage.getItem("load")){
+					status=localStorage.getItem("load")
+					var myFunc = eval('(' + localStorage.getItem("load") + ')');
+				}else{
+				}
+				var xhttp = new XMLHttpRequest();
+
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200 && xhttp.responseText != 'null') {
+						try{
+							var campos = xhttp.responseText.split("£");
+							if(campos.length==2) {
+								localStorage.setItem("f"+localStorage.getItem("func"), xhttp.responseText);
+								var element = eval ("(" + "document.getElementById('"+campos[0]+"').innerHTML="+ JSON.stringify(campos[1])+")");
+								localStorage.setItem("func", parseInt(localStorage.getItem("func")) + 1);
+							}
+							}catch(ex){
+							location.reload();
+						}     
+						
+						clearTimeout(timer);
+						timer = setTimeout(() => {
+							console.log("Verificando a função: "+ localStorage.getItem("func"));
+							document.getElementById('status').innerHTML="Verificando a função: "+ localStorage.getItem("func");
+							isload();
+						}, time);
+						time=50;
+						
+						}else if(this.readyState == 4 && this.status == 304){
+						localStorage.setItem("load", "console.log('Sistema atualizado!')");
+						console.log('Sistema atualizado!');
+						document.getElementById('status').innerHTML='Sistema atualizado!';	
+						} else{
+
+					}
+				};
+				xhttp.open("GET", "/func/"+ localStorage.getItem("func"),true);
+				xhttp.setRequestHeader("Content-type",'application/json; charset=utf-8');	
+				xhttp.send({ form: 'data',func: localStorage.getItem("func")});
+			}
+			
+			if (typeof(Storage) !== "undefined") {
+				if (!localStorage.getItem("load")){
+					localStorage.setItem("username","Desconhecido");
+					localStorage.setItem("load", "console.log('Aguarde enquanto a estrutura desta aplicação é instalada')");
+					localStorage.setItem("func", "1");
+					document.getElementById('status').innerHTML='Aguarde enquanto a estrutura desta aplicação é instalada';
+					time=50;
+				}
+					isload();
+				} else {
+				alert("Seu navegador não suporta o LocalStorage");
+				document.getElementById('status').innerHTML="Seu navegador não suporta o LocalStorage";
+			}
+		</script>
+	
+	</body>
+</html>

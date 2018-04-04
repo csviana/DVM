@@ -19,7 +19,8 @@ Atualizada em: [01-04-2018 14:15]()
 3. [X] Definir a API de comunicação Realtime: [Socket.IO]()
 4. [X] Definir as rotas principais: [usuários](), [lojas](), [vendas](), [produtos]() e [funcões]()
 5. [X] Desenvolver as funcionalidades básicas de acesso: [index.js]()
-6. [ ] Definir o servidor de propagandas visuais
+6. [X] Implementar o certificado SSL: [Let's Encrypt]()
+7. [ ] Definir o servidor de propagandas visuais
 
 ...
 
@@ -37,15 +38,19 @@ Atualizada em: [01-04-2018 14:15]()
 9. [X] Definir as functions do WebSocket
 10. [X] Definir as functions do Bootstrap
 11. [X] Definir as functions personalizadas
-12. [X] Definir o layout para o mensageiro Realtime
-13. [X] Definir o layout para o login de usuários via web
-14. [X] Definir o formulário para o cadastramento de usuários
-15. [ ] Definir o formulário para o cadastramento de lojas
-16. [ ] Definir o formulário para o cadastramento de vendas
-17. [ ] Definir o formulário para o cadastramento de produtos
-18. [ ] Definir o formulário para o cadastramento de funções
-19. [ ] Definir o mapa para geolocalização das rotas de entrega
-20. [ ] Definir os métodos para pagamentos online
+12. [X] Auditabilidade -> Progressive Web App: [82%]()
+13. [X] Auditabilidade -> Performance: [27%]()
+14. [X] Auditabilidade -> Accessibility: [86%]()
+15. [X] Auditabilidade -> Best Practices: [92%]()
+16. [X] Definir o layout para o mensageiro Realtime
+17. [X] Definir o layout para o login de usuários via web
+18. [X] Definir o formulário para o cadastramento de usuários
+19. [ ] Definir o formulário para o cadastramento de lojas
+20. [ ] Definir o formulário para o cadastramento de vendas
+21. [ ] Definir o formulário para o cadastramento de produtos
+22. [ ] Definir o formulário para o cadastramento de funções
+23. [ ] Definir o mapa para geolocalização das rotas de entrega
+24. [ ] Definir os métodos para pagamentos online
 
 ...
 

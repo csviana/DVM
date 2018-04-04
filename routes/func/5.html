@@ -1,144 +1,134 @@
-scripts£<script>
-  var socket = io.connect('http://csviana.ddns.net:2558',{ upgrade: false, transports: ['websocket']});
-  var IDUser;
-  var NameUser;
-  
-  var dados = localStorage.getItem("username").split("¢");
-  if(dados.length==2){
-    IDUser = dados[0].toString();
-    NameUser = dados[1].toString();
-    $("#formuser").hide();
-    $("#loginuser").hide();
-    
-    }else if(localStorage.getItem("username") == "Desconhecido"){
-    var person = prompt("Defina o seu nome temporário", "");
-    
-    if (person == null || person == "") {
-      localStorage.setItem("username", "Intruso");
-      NameUser = "Intruso";
-      } else {
-      localStorage.setItem("username", person);
-      NameUser = person;
-    }
-  }
-  var userpass;
-  if(IDUser!=null){
-    userpass = {
-      id:IDUser,
-      name: NameUser,
-      position: "0,0,0",
-      msg: "Conectado(a)",
-      foto:"sem"
-    };
-    }else{
-    userpass = {
-      name: NameUser,
-      position: "0,0,0",
-      msg: "Conectado(a)",
-      foto:"sem"
-    };
-  }
-  
-  socket.emit('PLAY', userpass);
-  socket.emit('USER_CONNECT');
-  var countuser=0;
-  
-  
-  socket.on('MSG', function(data){
-    var id =data.id;
-    var name =data.name;
-    var agora = new Date(Date.now());
-    var hora = agora.getHours().toString() + ":" + agora.getMinutes().toString() + ":" + agora.getSeconds().toString();
-    var msg =data.msg;
-    $("#mensagens ul").prepend('<li class="row"><div class="text-left"><spam class="sombra text-left">'+name+':</spam><p class="alert-info text-left">'+msg+'<br> ['+hora+']</p></div></li>');
-    
-    $("#onlines").text("Online: "+countuser);
-  });
-  
-  function sendUser(){
-    var xhttp2 = new XMLHttpRequest();
-    xhttp2.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200 && xhttp2.responseText != 'null') {
-              try{
-          var retorno = JSON.parse(xhttp2.responseText);
-          if(retorno.err!= undefined) alert(retorno.err);
-        }catch(ex){console.log(ex);}
-              try{
-          var retorno = JSON.parse(xhttp2.responseText);
-          if(retorno._id!= undefined){
-            alert("Usuário criado com sucesso!");
-          $('#newuser').trigger("reset");}
-        }catch(ex){console.log(ex);}
-      }
-    };
-    xhttp2.open("POST", "/usuarios/", true);
-    xhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp2.send($("#newuser").serialize());
-  }
-  
-  function sendLogin(){
-    var xhttp3 = new XMLHttpRequest();
-    xhttp3.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200 && xhttp3.responseText != 'null') {
-              try{
-          var retorno = JSON.parse(xhttp3.responseText);
-          if(retorno.err!= undefined) alert(retorno.err);
-        }catch(ex){console.log(ex);}
-              try{
-          var retorno = JSON.parse(xhttp3.responseText);
-          if(retorno._id!= undefined){
-            alert("Usuário logado com sucesso! ID: "+retorno._id);
-            localStorage.setItem("username",retorno._id+"¢"+retorno.nome);
-            $('#sendlogin').trigger("reset");
-            location.reload();
-          }
-        }catch(ex){console.log(ex);}
-        
-      }
-    };
-    xhttp3.open("POST", "/usuarios/", true);
-    xhttp3.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp3.send($("#sendlogin").serialize());
-  }
+homepage£<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand">Nabodega - Em desenvolvimento</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a >Entrar</a></li>
+				<li><a >Abrir Conta</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ajuda?<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a >Vixe, esqueci a senha!</a></li>
+						<li><a >Como me estribar?</a></li>
+						<li><a >Como abrir uma bodega?</a></li>
+						<li role="separator" class="divider"></li>
+						<li class="dropdown-header">Procuro por:</li>
+						<li><a >Fulano(a)</a></li>
+						<li><a >Uma budega</a></li>
+						<li><a >Um negócio pra comprar</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
 
-  function sendMSG(){
-    if($("#sendmsg").val() != null && $('#sendmsg').val() != "" ){
-      console.log("não vazio");
-      var sendmsg={
-        id:IDUser,
-        name: NameUser,
-        msg:$("#sendmsg").val()
-      };
-      
-      socket.emit('MSG', sendmsg);
-      var agora = new Date(Date.now());
-      var hora = agora.getHours().toString() + ":" + agora.getMinutes().toString() + ":" + agora.getSeconds().toString();
-      $("#mensagens ul").prepend('<li class="row"><div class="text-right"><p class="alert-success text-right">'+$('#sendmsg').val()+'<br>['+hora+']</p></div></li>');
-      $('#sendmsg').val("");
-    }
-  }
-  
-  socket.on('USER_CONNECTED', function(data){
-    countuser++;
-    $("#onlines").text("Online: "+countuser);
-  });
-  
-  socket.on('USER_DISCONNECTED', function(data){
-    countuser--;
-    $("#onlines").text("Online: "+countuser);
-  });
-  
-  socket.on('PLAY', function (data) {
-    IDUser = data.id;
-    NameUser = data.name;
-    
-    $("#onlines").text("Online: "+countuser);
-    $("#usuario").text("Bem-vindo(a), "+NameUser+"!");
-  });
-  console.log("Esta aplicação é atualizada automaticamente...");
-  
-  function verclipe(){
-    
-    $("#clipe").html('<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/02AuBRrPyPQ?autoplay=1&fs=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&ap=%2526fmt%3D22"></iframe>');
-  }
-  </script>
+<div id="inicio" class="container">
+	<div class="jumbotron">
+		<br /><br /><br />
+		<h1>Diacho é isso?</h1>
+		<p class="lead">É um modelo de negócio, onde você terá um jeito arretado pra encontrar um bocado de coisa.</p>
+		<p><a class="btn btn-lg btn-danger" role="button">Teste a Aplicação</a></p>
+	</div>
+	<br /><br />
+	<div class="row">
+		
+		<div class="col-lg-4 text-center">
+			<h3>Download</h3><br />
+			<p> <a class="btn btn-danger" href="/apk/remote.apk">Compatível com S.O. Android</a></p>
+			<br /><br />
+		</div>         
+		<div class="col-lg-8 text-center">
+			<div id="clipe" class="embed-responsive embed-responsive-16by9">
+				<div class="text-center">
+					<p>O clipe abaixo demonstra a aplicação prática de um sistema semelhante à nossa proposta, com a implementação da tecnologia VR (Realidade Virtual)</p>
+					<p class="text-danger">Clipe ilustrativo, apenas reproduzido por esta página, não o produzimos</p>
+					<br />
+				<button id="showclipe" onclick="verclipe()" role="button" class="small tn btn-lg btn-danger">Ver Clipe!</button></div>
+			</div>
+			<br />
+		</div>
+		<div class="col-lg-12"></div>
+		<div class="col-lg-6" id="loginuser">
+			<h4>Login</h4>
+			<form class="form-group" id="sendlogin" method="post" action="/usuarios/" onsubmit="sendLogin();return false" enctype="application/x-www-form-urlencoded" autocomplete="off">
+				<input class="form-control input"  autocomplete="off" autocomplete="new-email" type="email" name="em" placeholder="Seu Email" required="required" autocomplete="new-password">
+				<input   class="form-control input" type="password" name="sn" placeholder="Sua senha" required="required" autocomplete="new-password">
+				<button type="submit" class="btn btn-danger btn-block btn-large form-control input">Entre</button>
+			</form>
+		</div>
+		<div class="col-lg-6" id="formuser">
+			<h4>Novo Cadastro:</h4>
+<form  id="newuser" onsubmit="sendUser(); return false;" action="/usuarios" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="off" >
+	<div class="form-group">
+		<label for="em">Email</label>
+		<input type="em" class="form-control input" id="em" name="em" aria-describedby="emHelp" placeholder="Defina o seu email" required autocomplete="new-password"> 
+		<small id="emHelp"  class="form-text text-muted">O email será a sua única identificação de acesso</small>
+	</div>
+	<div class="form-group">
+		<label for="pw">Senha</label>
+		<input type="password"  class="form-control input" id="pw" name="pw" placeholder="Defina a sua senha de acesso" required autocomplete="new-password" >
+	</div>
+	<div class="form-group">
+		<label for="nome">Nome</label>
+		<input type="text" autocomplete="off" class="form-control" id="nome" name="nome" placeholder="Defina o nome e sobrenome" required>
+	</div>
+	<div class="form-group">
+		<label for="eu">Endereço</label>
+		<input type="text" autocomplete="off" class="form-control" id="eu" name="eu" placeholder="Apenas rua ou avenida, número e município" required>
+		<input type="hidden" name="gm" value="1">
+	</div>
+	<div class="form-group">
+		<label for="tf">Telefones</label>
+		<input type="text" autocomplete="off" class="form-control" id="tf" name="tf" placeholder="Telefone Fixo(opcional)"  pattern="\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$">
+		<input type="text" autocomplete="off" class="form-control" name="tf" placeholder="Telefone Móvel:(99)99999-9999"  pattern="\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$" required>
+	</div>
+	<div class="form-check">
+		<input type="checkbox" class="form-check-input" id="tm" aria-describedby="tmHelp" required>
+		<label class="form-check-label" for="tm">Confirme que leu o termo de uso.</label><br>
+		<small id="tmHelp" class="form-text text-muted">Leia o termo de utilização > <a href="#termo">aqui</a>.</small>
+		<input type="hidden" name="ps" value="0,0,0">
+		<input type="hidden" name="rt" value="0,0,0">
+	</div>
+	<br>
+	<button type="submit" class="btn btn-danger">Cadastrar</button>
+</form>
+		</div>
+	</div>
+	
+	<footer class="footer text-center">
+		<div class="col-xs-4">
+			<p>Projeto:</p>
+			<p id="p456"><a class="text-info border-0" target="_blank" rel="noopener" role="link" href='https://csviana.github.io/DVM/' ><img class="img-circle img-responsive" id="projeto"></img></a><br>Apresentação</p>
+			<br>
+		</div>
+		<div class="col-xs-4">
+			<p>Desenvolvedor:</p>
+			<p  id="p123"><a class="text-info border-0" target="_blank" rel="noopener" role="link" href='https://www.linkedin.com/in/csviana2018/'  ><img  class="img-circle img-responsive " id="perfil"></img></a><br>Cleirton Viana</p>
+			<br>
+		</div>
+		<div class="col-xs-12 align-text-bottom"><p>&copy; 2018 Nabodega, Inc. </p></div>
+	</footer>
+</div>
+
+<div id="mensagens" class="container-fluid">
+	<div class="row sombra" id="onlines"></div>
+	<div class="row sombra" id="usuario"></div>
+	<br>
+	<div class="row">
+		<h4 class="col-xs-12 sombra">Bate-papo:</h4>
+		<form onsubmit="sendMSG();return false;"><input type="text" class="col-xs-10" id="sendmsg" />
+		<input type="submit" class="col-xs-2" value=">"/></form>
+	</div>
+	<ul class="col-xs-12 list-group"></ul>
+</div>

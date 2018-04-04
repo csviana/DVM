@@ -6,9 +6,91 @@
 */
 'use strict';
 
+//Carregando pacotes de roteamento:
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+var compression = require('compression');
+var path = require('path');
+var httpsRedirect = require('express-https-redirect');
+app.use(compression());
+//Definindo a engine view da API
+/*
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'imgs'));
+*/
+//Configuração variável para usar a função bodyParser():
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.use('/', httpsRedirect(true));
+
+app.use("/", express.static("loader"));
+//Carregando os pacotes para a comunicação segurança
+const https = require('spdy');
+
+const fs = require('fs');
+
+//Carregando as chaves de acesso criptografado:
+//var key = fs.readFileSync('encryption/account.key', 'utf8');
+var key = fs.readFileSync('encryption/private_rsa.key', 'utf8');
+var cert = fs.readFileSync( 'encryption/certificate.crt', 'utf8')
+var cav = fs.readFileSync( 'encryption/ca_bundle.crt', 'utf8')
+
+var options = {
+	key: key,
+	cert: cert,
+	//ca: 'https://acme-v01.api.letsencrypt.org/directory'
+	ca: cav
+};
+
+//Definindo as rotas:
+//Chamada das rotas predefinidas:
+var product_router = require('./routes/produtos');
+var loja_router = require('./routes/lojas');
+var venda_router = require('./routes/vendas');
+var functions_router = require('./routes/func');
+var usuario_router = require('./routes/usuarios');
+
+//Definindo a rota raiz
+
+
+app.get('*', function(req, res, next){
+	if(!req.secure)	return res.redirect('https://' + req.headers.host + req.url);
+	
+		// Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
+		// res.redirect('https://example.com' + req.url);	
+next();
+
+});
+app.use('/apk',express.static('public/apk'));
+
+//Rotas dos usuários:
+app.use('/usuarios', usuario_router);
+//Rotas dos produtos:
+app.use('/produtos', product_router);
+//Rotas das lojas:
+app.use('/lojas', loja_router);
+//Rotas das vendas:
+app.use('/vendas', venda_router);
+//Rotas das funções:
+app.use('/func', functions_router);
+
+
+//iniciando a aplicação:
+app.listen(80);
+
+
+//Abrind a conexão segura:
+https.createServer(options, app).listen(443);
+//------------------------------------------------------
+
 //Carregando os pacotes
 //Carregamento do Socket.io para a comunicação com o Unity 
-var io 				= require('socket.io')(2558);
+var sio 				= require('socket.io');
+
+var io = sio.listen(https.createServer(options, app).listen(2558),{key: key, cert: cert, ca: cav});
+
 var shortId 		= require('shortid');
 
 //Definindo o ambiente de Request Unity:
@@ -18,6 +100,8 @@ var count = 0;
 
 //Conexão ao socket:
 io.on('connection', function (socket) {
+
+	agent: https.globalAgent
 	//Definindo o usuário atual:
 	var currentUser;
 	
@@ -104,66 +188,3 @@ io.on('connection', function (socket) {
 console.log("------- RECEBENDO DADOS DOS CLIENTES UNITY -------");
 
 //----------------------------------------------------------------------------------------//
-
-//Carregando pacotes de roteamento:
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var compression = require('compression');
-var path = require('path');
-
-//Definindo a engine view da API
-app.engine('ejs', require('ejs').renderFile);
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '/views'));
-
-//Configuração variável para usar a função bodyParser():
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(bodyParser.json());
-
-app.use("/", express.static("imgs"));
-//Carregando os pacotes para a comunicação segurança
-const https = require('https');
-const fs = require('fs');
-
-//Carregando as chaves de acesso criptografado:
-var key = fs.readFileSync('encryption/key.pem', 'utf8');
-var cert = fs.readFileSync( 'encryption/server.crt', 'utf8')
-
-var options = {
-	key: key,
-	cert: cert,
-	ca: 'https://acme-v01.api.letsencrypt.org/directory'
-};
-
-//Definindo as rotas:
-//Chamada das rotas predefinidas:
-var product_router = require('./routes/produtos');
-var loja_router = require('./routes/lojas');
-var venda_router = require('./routes/vendas');
-var functions_router = require('./routes/func');
-var usuario_router = require('./routes/usuarios');
-
-//Definindo a rota raiz
-app.get('/', function(req, res, next){
-	res.render('index' , { /*posts: body*/ });
-	next();
-});
-
-app.use('/apk',express.static('public/apk'));
-
-//Rotas dos usuários:
-app.use('/usuarios', usuario_router);
-//Rotas dos produtos:
-app.use('/produtos', product_router);
-//Rotas das lojas:
-app.use('/lojas', loja_router);
-//Rotas das vendas:
-app.use('/vendas', venda_router);
-//Rotas das funções:
-app.use('/func', functions_router);
-app.use(compression());
-//iniciando a aplicação:
-app.listen(80);
-//Abrind a conexão segura:
-https.createServer(options, app).listen(443);

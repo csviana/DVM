@@ -8,13 +8,14 @@
 //Carregamdo as dependências
 const router = require("express").Router();
 const fs = require("fs");
+const zlib = require('zlib');
 
 //Definindo a rota para carregar a função no localStorage do cliente
 router.get("/:id", (req, res, next)=>{
     var nid = req.params.id;
 	
     //Reporte da conexão solicitando a função
-    if (nid != "9") //Defina para a quantidade de arquivos dentro da pasta func +1,
+    if (nid != "8") //Defina para a quantidade de arquivos dentro da pasta func +1,
     console.log(req.connection.remoteAddress + ":"+ nid); //Retorna o ip solicitante + a função solicitata
 	
     //Verifica se existe o arquivo referente a função solicitada e retorna a função ao cliente, caso exista
@@ -22,8 +23,20 @@ router.get("/:id", (req, res, next)=>{
     res.removeHeader('X-Powered-By');
     if (!fs.existsSync(file)) return res.status(304).end("null");
     var arquivo = fs.readFileSync(file);
-    //var nfile= new Buffer(arquivo).toString().replace(/\n/g,'').replace(/\r/g,'').replace(/\t/g,'').replace(/  /g," ").replace(/: /g,':').replace(/ :/g,':').replace(/" /g,'"').replace(/' /g,"'").replace(/ '/g,"'").replace(/ "/g,'"').replace("<script>",'').replace("</script>",'').replace("<style>","").replace("</style>","");
+
+   
+   // res.setHeader("content-encoding","gzip");
+    //9var nfile= new Buffer(arquivo).toString().replace(/\n/g,'').replace(/\r/g,'').replace(/\t/g,'').replace(/  /g," ").replace(/: /g,':').replace(/ :/g,':').replace(/" /g,'"').replace(/' /g,"'").replace(/ '/g,"'").replace(/ "/g,'"').replace("<script>",'').replace("</script>",'').replace("<style>","").replace("</style>","");
     var nfile= new Buffer(arquivo).toString().replace(/\n/g,'').replace(/\r/g,'').replace(/\t/g,'').replace("<script>",'').replace("</script>",'').replace("<style>","").replace("</style>","");
-    return res.end(nfile);
+    
+    zlib.deflate(nfile, function(err, result) {
+        if (!err) {
+             res.setHeader('content-encoding', 'deflate');
+             res.send(result);
+             return  res.end() ;
+        }
+        else{  return  res.end(err);}
+     });
+   
 });
 module.exports = router;
