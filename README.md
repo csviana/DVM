@@ -6,9 +6,9 @@ Criar um ambiente tridimensional onde o usuário interaja por meio de seu smartp
 <br />
 
 ### Atividades em andamento:
-##### Restruturação do Front-end para carregar o layout principal com uma breve animação de maneira instantânia e gerenciar o carregamento de microfunções em segundo plano.
+##### Aplicação do conjunto de técnica ITIL para aprimorar este serviço e agilizar sua entrega.
 
-Atualizada em: [01-04-2018 14:15]()
+Atualizada em: [16-04-2018 18:54]()
 
 <br />
 
@@ -29,7 +29,7 @@ Atualizada em: [01-04-2018 14:15]()
 ### Desenvolvimento Front-end:
 1. [X] Definir as bibliotecas utilizadas: [Jquery]()
 2. [X] Definir os frameworks utilizados: [Bootstrap]()
-3. [X] Definir o método de armazenamento web: [localStorage]()
+3. [X] Definir o método de armazenamento web: [localStorage]() e [Service Work - Offline]()
 4. [X] Definir o CSS do Bootstrap
 5. [X] Definir o CSS personalizado
 6. [X] Definir a estrutura HTML5 da Homepage
@@ -38,19 +38,22 @@ Atualizada em: [01-04-2018 14:15]()
 9. [X] Definir as functions do WebSocket
 10. [X] Definir as functions do Bootstrap
 11. [X] Definir as functions personalizadas
-12. [X] Auditabilidade -> Progressive Web App: [82%]()
-13. [X] Auditabilidade -> Performance: [27%]()
-14. [X] Auditabilidade -> Accessibility: [86%]()
-15. [X] Auditabilidade -> Best Practices: [92%]()
-16. [X] Definir o layout para o mensageiro Realtime
-17. [X] Definir o layout para o login de usuários via web
-18. [X] Definir o formulário para o cadastramento de usuários
-19. [ ] Definir o formulário para o cadastramento de lojas
-20. [ ] Definir o formulário para o cadastramento de vendas
-21. [ ] Definir o formulário para o cadastramento de produtos
-22. [ ] Definir o formulário para o cadastramento de funções
-23. [ ] Definir o mapa para geolocalização das rotas de entrega
-24. [ ] Definir os métodos para pagamentos online
+12. [X] Adicionar nas buscas do Google Search
+13. [X] Adicionar como aplicação no Facebbok
+14. [X] Adicionar como link compartilhável no Facebook
+15. [X] Auditabilidade -> Progressive Web App: [100%]()
+16. [X] Auditabilidade -> Performance: [62%]()
+17. [X] Auditabilidade -> Accessibility: [100%]()
+18. [X] Auditabilidade -> Best Practices: [100%]()
+19. [X] Definir o layout para o mensageiro Realtime
+20. [X] Definir o layout para o login de usuários via web
+21. [X] Definir o formulário para o cadastramento de usuários
+22. [ ] Definir o formulário para o cadastramento de lojas
+23. [ ] Definir o formulário para o cadastramento de vendas
+24. [ ] Definir o formulário para o cadastramento de produtos
+25. [ ] Definir o formulário para o cadastramento de funções
+26. [ ] Definir o mapa para geolocalização das rotas de entrega
+27. [ ] Definir os métodos para pagamentos online
 
 ...
 
